@@ -1,10 +1,10 @@
-# novelyst_plugin Dictionary
+# novelyst_yw7 Dictionary
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
-"POT-Creation-Date: 2023-06-22 16:22:25\n"
+"POT-Creation-Date: 2023-10-24 19:37:55\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -14,5 +14,56 @@ msgstr ""
 "Generated-By: PyWriter pgettext.py 0.3\n"
 
 
-msgid "novelyst_plugin Online help"
+msgid "Action canceled by user"
+msgstr ""
+
+msgid "Arcs"
+msgstr ""
+
+msgid "Can not process file"
+msgstr ""
+
+msgid "Cannot overwrite file"
+msgstr ""
+
+msgid "Cannot write file"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Export to yw7"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "File exported"
+msgstr ""
+
+msgid "File imported"
+msgstr ""
+
+msgid "File type is not supported"
+msgstr ""
+
+msgid "Import from yw7..."
+msgstr ""
+
+msgid "Overwrite existing file \"{}\"?"
+msgstr ""
+
+msgid "Project notes"
+msgstr ""
+
+msgid "Reload"
+msgstr ""
+
+msgid "novelyst project"
+msgstr ""
+
+msgid "yWriter 7 project"
+msgstr ""
+
+msgid "yWriter seems to be open. Please close first"
 msgstr ""

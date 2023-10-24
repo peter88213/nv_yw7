@@ -1,11 +1,11 @@
-# novelyst_plugin Dictionary (English-German)
+# novelyst_yw7 Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
-"POT-Creation-Date: 2023-06-22 16:22:25\n"
-"PO-Revision-Date: 2023-06-22 16:22:26\n"
+"POT-Creation-Date: 2023-10-24 19:37:55\n"
+"PO-Revision-Date: 2023-10-24 19:37:56\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 
-msgid "novelyst_plugin Online help"
-msgstr "novelyst_plugin Online-Hilfe"
+msgid "Action canceled by user"
+msgstr "Vorgang vom Benutzer abgebrochen"
+
+msgid "Arcs"
+msgstr "Bögen"
+
+msgid "Can not process file"
+msgstr "Kann Datei nicht verarbeiten"
+
+msgid "Cannot overwrite file"
+msgstr "Kann Datei nicht überschreiben"
+
+msgid "Cannot write file"
+msgstr "Kann Datei nicht schreiben"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Export to yw7"
+msgstr "Zu yw7 exportieren"
+
+msgid "File"
+msgstr "Datei"
+
+msgid "File exported"
+msgstr "Datei exportiert"
+
+msgid "File imported"
+msgstr "Datei importiert"
+
+msgid "File type is not supported"
+msgstr "Dateityp wird nicht unterstützt"
+
+msgid "Import from yw7..."
+msgstr "Von yw7 importieren..."
+
+msgid "Overwrite existing file \"{}\"?"
+msgstr "Bestehende Datei \"{}\" überschreiben?"
+
+msgid "Project notes"
+msgstr "Projektnotizen"
+
+msgid "Reload"
+msgstr "Neu laden"
+
+msgid "novelyst project"
+msgstr "novelyst-Projekt"
+
+msgid "yWriter 7 project"
+msgstr "yWriter 7-Projekt"
+
+msgid "yWriter seems to be open. Please close first"
+msgstr "yWriter scheint offen zu sein. Bitte schließen"
 

@@ -1,13 +1,13 @@
-"""Build a novelyst_plugin plugin.
+"""Build a novelyst_yw7 plugin.
         
 In order to distribute a single script without dependencies, 
 this script "inlines" all modules imported from the pywriter package.
 
 The PyWriter project (see https://github.com/peter88213/PyWriter)
-must be located on the same directory level as the novelyst_plugin project. 
+must be located on the same directory level as the novelyst_yw7 project. 
 
 Copyright (c) 2023 Peter Triesberger
-For further information see https://github.com/peter88213/novelyst_plugin
+For further information see https://github.com/peter88213/novelyst_yw7
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
@@ -17,16 +17,14 @@ import inliner
 
 SRC = '../src/'
 BUILD = '../test/'
-SOURCE_FILE = f'{SRC}novelyst_plugin.py'
-TARGET_FILE = f'{BUILD}novelyst_plugin.py'
+SOURCE_FILE = f'{SRC}novelyst_yw7.py'
+TARGET_FILE = f'{BUILD}novelyst_yw7.py'
 
 os.makedirs(BUILD, exist_ok=True)
 
 
 def main():
-    inliner.run(SOURCE_FILE, TARGET_FILE, 'nvpluginlib', '../../novelyst_plugin/src/')
-    inliner.run(TARGET_FILE, TARGET_FILE, 'novelystlib', '../../novelyst/src/')
-    inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../../PyWriter/src/')
+    inliner.run(SOURCE_FILE, TARGET_FILE, 'novxlib', '../../novxlib/src/')
     print('Done.')
 
 

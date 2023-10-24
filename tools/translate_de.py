@@ -14,7 +14,7 @@ File structure:
 │   └── src/
 │       ├── translations.py
 │       └── msgfmt.py
-└── novelyst_plugin/
+└── novelyst_yw7/
     ├── src/ 
     ├── tools/ 
     │   └── translate_de.py
@@ -28,10 +28,10 @@ File structure:
         └── plugin_locale/
             └─ de/
                └─ LC_MESSAGES/
-                  └─ novelyst_plugin.mo
+                  └─ novelyst_yw7.mo
     
 Copyright (c) 2023 Peter Triesberger
-For further information see https://github.com/peter88213/novelyst_plugin
+For further information see https://github.com/peter88213/novelyst_yw7
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
@@ -41,7 +41,7 @@ import translations
 from shutil import copyfile
 import msgfmt
 
-APP_NAME = 'novelyst_plugin'
+APP_NAME = 'novelyst_yw7'
 PO_PATH = '../i18n/de.po'
 MO_PATH = f'../i18n/locale/de/LC_MESSAGES/{APP_NAME}.mo'
 MO_COPY = f'../../novelyst/src/locale/de/LC_MESSAGES/{APP_NAME}.mo'

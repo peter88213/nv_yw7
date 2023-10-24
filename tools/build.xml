@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="novelyst_plugin" basedir=".">
+<project name="novelyst_yw7" basedir=".">
 	<property name="version" value="0.1.0" />
-	<property name="plugin" value="novelyst_plugin" />
+	<property name="plugin" value="novelyst_yw7" />
 	
 	<property name="source-path" location="../src" />
 	<property name="test-path" location="../test" />
