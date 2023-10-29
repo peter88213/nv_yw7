@@ -1,5 +1,4 @@
 /build/
 *.pyc
 *.bak
-.pydevproject
-.project
+/test/novelyst_yw7
