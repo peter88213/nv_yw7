@@ -72,6 +72,9 @@ class Plugin:
         
         Return True on success, otherwise return False.
         """
+        if self._ui.prjFile.filePath is None:
+            return False
+
         path, __ = os.path.splitext(self._ui.prjFile.filePath)
         yw7Path = f'{path}{self._YW_CLASS.EXTENSION}'
         if os.path.isfile(yw7Path):
