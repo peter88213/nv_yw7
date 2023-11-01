@@ -100,7 +100,7 @@ class Plugin:
         Return True on success, otherwise return False.
         """
         self._ui.restore_status()
-        initDir = os.path.dirname(self._ui.kwargs.get('yw_last_open', ''))
+        initDir = os.path.dirname(self._ui.kwargs.get('last_open', ''))
         if not initDir:
             initDir = './'
         if not yw7Path or not os.path.isfile(yw7Path):
