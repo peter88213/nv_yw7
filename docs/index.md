@@ -12,9 +12,9 @@ The [novelyst](https://peter88213.github.io/novelyst/) Python program helps auth
 
 ## Download and install
 
-[Download the latest release (version 0.1.5)](https://github.com/peter88213/novelyst_yw7/raw/main/dist/novelyst_yw7_v0.1.5.zip)
+[Download the latest release (version 0.1.6)](https://github.com/peter88213/novelyst_yw7/raw/main/dist/novelyst_yw7_v0.1.6.zip)
 
-- Extract the "novelyst_yw7_v0.1.5" folder from the downloaded zipfile "novelyst_yw7_v0.1.5.zip".
+- Extract the "novelyst_yw7_v0.1.6" folder from the downloaded zipfile "novelyst_yw7_v0.1.6.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 
 ---
