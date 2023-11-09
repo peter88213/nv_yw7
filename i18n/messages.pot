@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1.7\n"
-"POT-Creation-Date: 2023-11-08 21:18:03\n"
+"Project-Id-Version: 0.1.8\n"
+"POT-Creation-Date: 2023-11-09 17:19:03\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -44,7 +44,13 @@ msgstr ""
 msgid "File type is not supported"
 msgstr ""
 
+msgid "Friday"
+msgstr ""
+
 msgid "Import from yw7..."
+msgstr ""
+
+msgid "Monday"
 msgstr ""
 
 msgid "No valid version found in file"
@@ -59,13 +65,28 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
+msgid "Saturday"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
 msgid "The project \"{}\" was created with a newer novelyst version."
 msgstr ""
 
 msgid "The project \"{}\" was created with an outdated novelyst version."
 msgstr ""
 
+msgid "Thursday"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
 msgid "Unnamed link"
+msgstr ""
+
+msgid "Wednesday"
 msgstr ""
 
 msgid "novelyst project"
