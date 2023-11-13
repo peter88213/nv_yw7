@@ -120,6 +120,7 @@ class Plugin:
                         self._ui.set_info_how(f'!{_("Action canceled by user")}.')
                         return False
 
+                self._ui.close_project()
                 yw7File = self._YW_CLASS(yw7Path)
                 yw7File.novel = Novel(tree=NvTree())
                 yw7File.read()

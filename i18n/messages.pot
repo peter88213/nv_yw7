@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1.11\n"
-"POT-Creation-Date: 2023-11-10 11:54:57\n"
+"Project-Id-Version: 0.1.12\n"
+"POT-Creation-Date: 2023-11-13 08:24:57\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -17,22 +17,10 @@ msgstr ""
 msgid "Action canceled by user"
 msgstr ""
 
-msgid "Arcs"
-msgstr ""
-
-msgid "Cannot overwrite file"
-msgstr ""
-
-msgid "Cannot write file"
-msgstr ""
-
 msgid "Close"
 msgstr ""
 
 msgid "Export to yw7"
-msgstr ""
-
-msgid "File"
 msgstr ""
 
 msgid "File exported"
@@ -44,56 +32,11 @@ msgstr ""
 msgid "File type is not supported"
 msgstr ""
 
-msgid "Friday"
-msgstr ""
-
 msgid "Import from yw7..."
-msgstr ""
-
-msgid "Monday"
-msgstr ""
-
-msgid "No valid version found in file"
 msgstr ""
 
 msgid "Overwrite existing file \"{}\"?"
 msgstr ""
 
-msgid "Project notes"
-msgstr ""
-
 msgid "Reload"
-msgstr ""
-
-msgid "Saturday"
-msgstr ""
-
-msgid "Sunday"
-msgstr ""
-
-msgid "The project \"{}\" was created with a newer novelyst version."
-msgstr ""
-
-msgid "The project \"{}\" was created with an outdated novelyst version."
-msgstr ""
-
-msgid "Thursday"
-msgstr ""
-
-msgid "Tuesday"
-msgstr ""
-
-msgid "Unnamed link"
-msgstr ""
-
-msgid "Wednesday"
-msgstr ""
-
-msgid "novelyst project"
-msgstr ""
-
-msgid "yWriter 7 project"
-msgstr ""
-
-msgid "yWriter seems to be open. Please close first"
 msgstr ""
