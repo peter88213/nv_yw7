@@ -12,7 +12,7 @@ The [novelyst](https://peter88213.github.io/novelyst/) Python program helps auth
 
 ## Download and install
 
-[Download the latest release (version 0.1.12)](https://github.com/peter88213/novelyst_yw7/raw/main/dist/novelyst_yw7_v0.1.12.zip)
+[Download the latest release (version 0.1.12)](https://github.com/peter88213/noveltree_yw7/raw/main/dist/novelyst_yw7_v0.1.12.zip)
 
 - Extract the "novelyst_yw7_v0.1.12" folder from the downloaded zipfile "novelyst_yw7_v0.1.12.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
@@ -31,4 +31,4 @@ See the [instructions for use](usage)
 
 This is Open Source software, and the *novelyst_yw7* plugin is licensed under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
-details, or consult the [LICENSE](https://github.com/peter88213/novelyst_yw7/blob/main/LICENSE) file.
+details, or consult the [LICENSE](https://github.com/peter88213/noveltree_yw7/blob/main/LICENSE) file.
