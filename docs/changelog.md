@@ -9,4 +9,4 @@
 
 - Release under the GPLv3 license.
 
-Compatibility: novelyst v4.28 API
+Compatibility: noveltree v4.28 API

@@ -1,10 +1,10 @@
-"""Build a novelyst_yw7 plugin.
+"""Build a noveltree_yw7 plugin.
         
 In order to distribute a single script without dependencies, 
 this script "inlines" all modules imported from the novxlib package.
 
 The novxlib project (see https://github.com/peter88213/novxlib)
-must be located on the same directory level as the novelyst_yw7 project. 
+must be located on the same directory level as the noveltree_yw7 project. 
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/noveltree_yw7
@@ -17,8 +17,8 @@ import inliner
 
 SRC = '../src/'
 BUILD = '../test/'
-SOURCE_FILE = f'{SRC}novelyst_yw7.py'
-TARGET_FILE = f'{BUILD}novelyst_yw7.py'
+SOURCE_FILE = f'{SRC}nv_yw7.py'
+TARGET_FILE = f'{BUILD}noveltree_yw7.py'
 
 os.makedirs(BUILD, exist_ok=True)
 

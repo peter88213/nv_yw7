@@ -1,11 +1,11 @@
-# novelyst_yw7 Dictionary (English-German)
+# nv_yw7 Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1.12\n"
-"POT-Creation-Date: 2023-11-13 08:24:57\n"
-"PO-Revision-Date: 2023-11-13 08:24:58\n"
+"Project-Id-Version: 0.1.13\n"
+"POT-Creation-Date: 2023-12-10 14:33:02\n"
+"PO-Revision-Date: 2023-12-10 14:33:03\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"

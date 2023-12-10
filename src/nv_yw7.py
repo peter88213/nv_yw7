@@ -1,4 +1,4 @@
-"""yw7 file import/export plugin for novelyst.
+"""yw7 file import/export plugin for noveltree.
 
 Requires Python 3.6+
 Copyright (c) 2023 Peter Triesberger
@@ -20,7 +20,7 @@ APPLICATION = 'yw7 file import/export plugin'
 
 # Initialize localization.
 try:
-    t = gettext.translation('novelyst_yw7', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
+    t = gettext.translation('noveltree_yw7', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
     _ = t.gettext
 except:
     pass
@@ -33,12 +33,12 @@ class Plugin:
         disable_menu() -- disable menu entries when no project is open.
         enable_menu() -- enable menu entries when a project is open.
         on_close() -- Actions to be performed when a project is closed.       
-        on_quit() -- Actions to be performed when novelyst is closed.               
+        on_quit() -- Actions to be performed when noveltree is closed.               
     """
     VERSION = '@release'
     NOVELYST_API = '5.0'
     DESCRIPTION = 'yw7 file import/export plugin'
-    URL = 'https://peter88213.github.io/novelyst'
+    URL = 'https://peter88213.github.io/noveltree'
 
     _YW_CLASS = Yw7File
     _NOVX_CLASS = NovxFile

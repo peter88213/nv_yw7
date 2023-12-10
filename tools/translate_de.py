@@ -14,7 +14,7 @@ File structure:
 │   └── src/
 │       ├── translations.py
 │       └── msgfmt.py
-└── novelyst_yw7/
+└── noveltree_yw7/
     ├── src/ 
     ├── tools/ 
     │   └── translate_de.py
@@ -28,7 +28,7 @@ File structure:
         └── plugin_locale/
             └─ de/
                └─ LC_MESSAGES/
-                  └─ novelyst_yw7.mo
+                  └─ noveltree_yw7.mo
     
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/noveltree_yw7
@@ -41,7 +41,7 @@ import translations
 from shutil import copyfile
 import msgfmt
 
-APP_NAME = 'novelyst_yw7'
+APP_NAME = 'nv_yw7'
 PO_PATH = '../i18n/de.po'
 MO_PATH = f'../i18n/locale/de/LC_MESSAGES/{APP_NAME}.mo'
 MO_COPY = f'../../kalliope/src/locale/de/LC_MESSAGES/{APP_NAME}.mo'
