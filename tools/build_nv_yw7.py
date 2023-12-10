@@ -18,13 +18,13 @@ import inliner
 SRC = '../src/'
 BUILD = '../test/'
 SOURCE_FILE = f'{SRC}nv_yw7.py'
-TARGET_FILE = f'{BUILD}noveltree_yw7.py'
+TARGET_FILE = f'{BUILD}nv_yw7.py'
 
 os.makedirs(BUILD, exist_ok=True)
 
 
 def main():
-    inliner.run(SOURCE_FILE, TARGET_FILE, 'novxlib-Alpha', '../../novxlib-Alpha/src/')
+    inliner.run(SOURCE_FILE, TARGET_FILE, 'novxlib', '../../novxlib-Alpha/src/')
     print('Done.')
 
 

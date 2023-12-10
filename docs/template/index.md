@@ -8,7 +8,7 @@ The [noveltree](https://peter88213.github.io/noveltree/) Python program helps au
 
 ## Requirements
 
-- [noveltree](https://peter88213.github.io/noveltree/) version 4.28+
+- [noveltree](https://peter88213.github.io/noveltree/) version 1.0+
 
 ## Download and install
 

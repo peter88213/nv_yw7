@@ -2,7 +2,7 @@
 
 Requires Python 3.6+
 Copyright (c) 2023 Peter Triesberger
-For further information see https://github.com/peter88213/noveltree
+For further information see https://github.com/peter88213/nv_yw7
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import sys
@@ -20,7 +20,7 @@ APPLICATION = 'yw7 file import/export plugin'
 
 # Initialize localization.
 try:
-    t = gettext.translation('noveltree_yw7', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
+    t = gettext.translation('nv_yw7', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
     _ = t.gettext
 except:
     pass
@@ -36,7 +36,7 @@ class Plugin:
         on_quit() -- Actions to be performed when noveltree is closed.               
     """
     VERSION = '@release'
-    NOVELYST_API = '5.0'
+    NOVELYST_API = '0.1'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://peter88213.github.io/noveltree'
 
