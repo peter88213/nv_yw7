@@ -72,10 +72,10 @@ class Plugin:
         
         Return True on success, otherwise return False.
         """
-        if self._ui.prjFile.filePath is None:
+        if self._ui.model.filePath is None:
             return False
 
-        path, __ = os.path.splitext(self._ui.prjFile.filePath)
+        path, __ = os.path.splitext(self._ui.model.filePath)
         yw7Path = f'{path}{self._YW_CLASS.EXTENSION}'
         if os.path.isfile(yw7Path):
             if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(yw7Path))):
@@ -84,7 +84,7 @@ class Plugin:
 
         yw7File = Yw7File(yw7Path)
         yw7File.novel = self._ui.novel
-        yw7File.wcLog = self._ui.prjFile.wcLog
+        yw7File.wcLog = self._ui.model.wcLog
         try:
             yw7File.write()
         except TypeError as ex:
