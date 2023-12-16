@@ -136,7 +136,7 @@ class Plugin:
             self._ui.set_info_how(f'!{str(ex)}')
             return False
 
-        self._ui.open_project(novxFile.filePath)
+        self._ui.open_project(fileName=novxFile.filePath)
         self._ui.set_info_how(f'{_("File imported")}: {yw7Path}')
         return True
 
