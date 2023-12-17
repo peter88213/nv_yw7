@@ -12,9 +12,9 @@ The [noveltree](https://peter88213.github.io/noveltree/) Python program helps au
 
 ## Download and install
 
-[Download the latest release (version 0.1.15)](https://github.com/peter88213/noveltree_yw7/raw/main/dist/noveltree_yw7_v0.1.15.zip)
+[Download the latest release (version 0.2.0)](https://github.com/peter88213/noveltree_yw7/raw/main/dist/noveltree_yw7_v0.2.0.zip)
 
-- Extract the "noveltree_yw7_v0.1.15" folder from the downloaded zipfile "noveltree_yw7_v0.1.15.zip".
+- Extract the "noveltree_yw7_v0.2.0" folder from the downloaded zipfile "noveltree_yw7_v0.2.0.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 
 ---

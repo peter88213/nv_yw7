@@ -27,28 +27,23 @@ except:
 
 
 class Plugin:
-    """yw7 file import/export plugin class.
-    
-    Public methods:
-        disable_menu() -- disable menu entries when no project is open.
-        enable_menu() -- enable menu entries when a project is open.
-        on_close() -- Actions to be performed when a project is closed.       
-        on_quit() -- Actions to be performed when noveltree is closed.               
-    """
+    """yw7 file import/export plugin class."""
     VERSION = '@release'
-    NOVELYST_API = '0.1'
+    NOVELYST_API = '0.6'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://peter88213.github.io/noveltree'
 
     _YW_CLASS = Yw7File
     _NOVX_CLASS = NovxFile
 
-    def install(self, ui):
+    def install(self, controller, ui):
         """Add commands to the view.
         
         Positional arguments:
-            ui -- reference to the NoveltreeUi instance of the application.
+            controller -- reference to the main controller instance of the application.
+            ui -- reference to the main view instance of the application.
         """
+        self._controller = controller
         self._ui = ui
 
         # Add an entry to the "File > New" menu.
@@ -63,10 +58,10 @@ class Plugin:
         
         Return True on success, otherwise return False.
         """
-        if self._ui.model.filePath is None:
+        if self._controller.model.filePath is None:
             return False
 
-        path, __ = os.path.splitext(self._ui.model.filePath)
+        path, __ = os.path.splitext(self._controller.model.filePath)
         yw7Path = f'{path}{self._YW_CLASS.EXTENSION}'
         if os.path.isfile(yw7Path):
             if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(yw7Path))):
@@ -74,8 +69,8 @@ class Plugin:
                 return False
 
         yw7File = Yw7File(yw7Path)
-        yw7File.novel = self._ui.novel
-        yw7File.wcLog = self._ui.model.wcLog
+        yw7File.novel = self._controller.novel
+        yw7File.wcLog = self._controller.model.wcLog
         try:
             yw7File.write()
         except TypeError as ex:
@@ -91,14 +86,16 @@ class Plugin:
         Return True on success, otherwise return False.
         """
         self._ui.restore_status()
-        initDir = os.path.dirname(self._ui.kwargs.get('last_open', ''))
+        initDir = os.path.dirname(self._controller.kwargs.get('last_open', ''))
         if not initDir:
             initDir = './'
         if not yw7Path or not os.path.isfile(yw7Path):
             fileTypes = [(self._YW_CLASS.DESCRIPTION, self._YW_CLASS.EXTENSION)]
-            yw7Path = filedialog.askopenfilename(filetypes=fileTypes,
-                                                  defaultextension=self._YW_CLASS.EXTENSION,
-                                                  initialdir=initDir)
+            yw7Path = filedialog.askopenfilename(
+                filetypes=fileTypes,
+                defaultextension=self._YW_CLASS.EXTENSION,
+                initialdir=initDir
+                )
         if not yw7Path:
             return False
 
@@ -111,7 +108,7 @@ class Plugin:
                         self._ui.set_info_how(f'!{_("Action canceled by user")}.')
                         return False
 
-                self._ui.close_project()
+                self._controller.close_project()
                 yw7File = self._YW_CLASS(yw7Path)
                 yw7File.novel = Novel(tree=NvTree())
                 yw7File.read()
@@ -127,7 +124,7 @@ class Plugin:
             self._ui.set_info_how(f'!{str(ex)}')
             return False
 
-        self._ui.open_project(fileName=novxFile.filePath)
+        self._controller.open_project(fileName=novxFile.filePath)
         self._ui.set_info_how(f'{_("File imported")}: {yw7Path}')
         return True
 
