@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1.14\n"
-"POT-Creation-Date: 2023-12-10 19:06:30\n"
+"Project-Id-Version: 0.1.15\n"
+"POT-Creation-Date: 2023-12-17 10:19:55\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -26,10 +26,7 @@ msgstr ""
 msgid "Cannot write file"
 msgstr ""
 
-msgid "Close"
-msgstr ""
-
-msgid "Export to yw7"
+msgid "Create from yw7..."
 msgstr ""
 
 msgid "File"
@@ -47,9 +44,6 @@ msgstr ""
 msgid "Friday"
 msgstr ""
 
-msgid "Import from yw7..."
-msgstr ""
-
 msgid "Monday"
 msgstr ""
 
@@ -57,9 +51,6 @@ msgid "No valid version found in file"
 msgstr ""
 
 msgid "Overwrite existing file \"{}\"?"
-msgstr ""
-
-msgid "Reload"
 msgstr ""
 
 msgid "Saturday"
@@ -96,4 +87,7 @@ msgid "yWriter 7 project"
 msgstr ""
 
 msgid "yWriter seems to be open. Please close first"
+msgstr ""
+
+msgid "yw7 project"
 msgstr ""

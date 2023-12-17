@@ -43,29 +43,20 @@ class Plugin:
     _YW_CLASS = Yw7File
     _NOVX_CLASS = NovxFile
 
-    def disable_menu(self):
-        """Disable menu entries when no project is open."""
-        self._ui.fileMenu.entryconfig(_('Export to yw7'), state='disabled')
-
-    def enable_menu(self):
-        """Enable menu entries when a project is open."""
-        self._ui.fileMenu.entryconfig(_('Export to yw7'), state='normal')
-
     def install(self, ui):
-        """Add a submenu to the 'Tools' menu.
+        """Add commands to the view.
         
         Positional arguments:
             ui -- reference to the NoveltreeUi instance of the application.
         """
         self._ui = ui
-        try:
-            self._ui.fileMenu.insert_command(_('Reload'), label=_('Import from yw7...'), command=self.import_yw7)
-        except:
-            self._ui.fileMenu.add_command(label=_('Import from yw7...'), command=self.import_yw7)
-        try:
-            self._ui.fileMenu.insert_command(_('Close'), label=_('Export to yw7'), command=self.export_yw7)
-        except:
-            self._ui.fileMenu.add_command(label=_('Export to yw7'), command=self.export_yw7)
+
+        # Add an entry to the "File > New" menu.
+        self._ui.newMenu.add_command(label=_('Create from yw7...'), command=self.import_yw7)
+
+        # Add an entry to the "Export" menu.
+        self._ui.exportMenu.add_separator()
+        self._ui.exportMenu.add_command(label=_('yw7 project'), command=self.export_yw7)
 
     def export_yw7(self):
         """Export the current project to yw7.
