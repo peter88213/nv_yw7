@@ -5,16 +5,18 @@ Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv_yw7
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-import sys
-import os
-import locale
 import gettext
+import os
 from tkinter import filedialog
-from novxlib.novx_globals import *
+
 from novxlib.model.novel import Novel
 from novxlib.model.nv_tree import NvTree
-from novxlib.yw.yw7_file import Yw7File
 from novxlib.novx.novx_file import NovxFile
+from novxlib.novx_globals import CURRENT_LANGUAGE
+from novxlib.novx_globals import LOCALE_PATH
+from novxlib.novx_globals import _
+from novxlib.novx_globals import norm_path
+from novxlib.yw.yw7_file import Yw7File
 
 APPLICATION = 'yw7 file import/export plugin'
 
@@ -36,7 +38,7 @@ class Plugin:
     _YW_CLASS = Yw7File
     _NOVX_CLASS = NovxFile
 
-    def install(self, controller, ui):
+    def install(self, controller, ui, prefs):
         """Add commands to the view.
         
         Positional arguments:
@@ -45,6 +47,7 @@ class Plugin:
         """
         self._controller = controller
         self._ui = ui
+        self._prefs = prefs
 
         # Add an entry to the "File > New" menu.
         self._ui.newMenu.add_command(label=_('Create from yw7...'), command=self.import_yw7)
@@ -86,7 +89,7 @@ class Plugin:
         Return True on success, otherwise return False.
         """
         self._ui.restore_status()
-        initDir = os.path.dirname(self._controller.kwargs.get('last_open', ''))
+        initDir = os.path.dirname(self._prefs.get('last_open', ''))
         if not initDir:
             initDir = './'
         if not yw7Path or not os.path.isfile(yw7Path):
