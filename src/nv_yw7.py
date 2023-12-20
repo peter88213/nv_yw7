@@ -38,7 +38,7 @@ class Plugin:
     _YW_CLASS = Yw7File
     _NOVX_CLASS = NovxFile
 
-    def install(self, controller, ui, prefs):
+    def install(self, model, ui, controller, prefs):
         """Add commands to the view.
         
         Positional arguments:
