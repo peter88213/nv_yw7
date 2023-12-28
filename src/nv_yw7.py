@@ -68,7 +68,7 @@ class Plugin:
         yw7Path = f'{path}{self._YW_CLASS.EXTENSION}'
         if os.path.isfile(yw7Path):
             if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(yw7Path))):
-                self._ui.set_info_how(f'!{_("Action canceled by user")}.')
+                self._ui.set_status(f'!{_("Action canceled by user")}.')
                 return False
 
         yw7File = Yw7File(yw7Path)
@@ -77,10 +77,10 @@ class Plugin:
         try:
             yw7File.write()
         except TypeError as ex:
-            self._ui.set_info_how(f'!{str(ex)}')
+            self._ui.set_status(f'!{str(ex)}')
             return False
 
-        self._ui.set_info_how(f'{_("File exported")}: {yw7Path}')
+        self._ui.set_status(f'{_("File exported")}: {yw7Path}')
         return True
 
     def import_yw7(self, yw7Path=''):
@@ -108,7 +108,7 @@ class Plugin:
                 novxPath = f'{filePath}{self._NOVX_CLASS.EXTENSION}'
                 if os.path.isfile(novxPath):
                     if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(novxPath))):
-                        self._ui.set_info_how(f'!{_("Action canceled by user")}.')
+                        self._ui.set_status(f'!{_("Action canceled by user")}.')
                         return False
 
                 self._controller.close_project()
@@ -120,14 +120,14 @@ class Plugin:
                 novxFile.wcLog = yw7File.wcLog
                 novxFile.write()
             else:
-                self._ui.set_info_how(f'!{_("File type is not supported")}.')
+                self._ui.set_status(f'!{_("File type is not supported")}.')
                 return False
 
         except Exception as ex:
-            self._ui.set_info_how(f'!{str(ex)}')
+            self._ui.set_status(f'!{str(ex)}')
             return False
 
         self._controller.open_project(fileName=novxFile.filePath)
-        self._ui.set_info_how(f'{_("File imported")}: {yw7Path}')
+        self._ui.set_status(f'{_("File imported")}: {yw7Path}')
         return True
 
