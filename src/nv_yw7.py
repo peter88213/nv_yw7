@@ -31,7 +31,7 @@ except:
 class Plugin:
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    NOVELYST_API = '0.6'
+    NOVELYST_API = '0.7'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://peter88213.github.io/noveltree'
 
@@ -45,8 +45,9 @@ class Plugin:
             controller -- reference to the main controller instance of the application.
             ui -- reference to the main view instance of the application.
         """
-        self._controller = controller
+        self._model = model
         self._ui = ui
+        self._controller = controller
         self._prefs = prefs
 
         # Add an entry to the "File > New" menu.
@@ -61,10 +62,10 @@ class Plugin:
         
         Return True on success, otherwise return False.
         """
-        if self._controller.model.filePath is None:
+        if self._model.prjFile.filePath is None:
             return False
 
-        path, __ = os.path.splitext(self._controller.model.filePath)
+        path, __ = os.path.splitext(self._model.prjFile.filePath)
         yw7Path = f'{path}{self._YW_CLASS.EXTENSION}'
         if os.path.isfile(yw7Path):
             if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(yw7Path))):
@@ -72,8 +73,8 @@ class Plugin:
                 return False
 
         yw7File = Yw7File(yw7Path)
-        yw7File.novel = self._controller.novel
-        yw7File.wcLog = self._controller.model.wcLog
+        yw7File.novel = self._model.novel
+        yw7File.wcLog = self._model.prjFile.wcLog
         try:
             yw7File.write()
         except TypeError as ex:
@@ -111,7 +112,7 @@ class Plugin:
                         self._ui.set_status(f'!{_("Action canceled by user")}.')
                         return False
 
-                self._controller.close_project()
+                self._controller.c_close_project()
                 yw7File = self._YW_CLASS(yw7Path)
                 yw7File.novel = Novel(tree=NvTree())
                 yw7File.read()
@@ -127,7 +128,7 @@ class Plugin:
             self._ui.set_status(f'!{str(ex)}')
             return False
 
-        self._controller.open_project(fileName=novxFile.filePath)
+        self._controller.c_open_project(filePath=novxFile.filePath)
         self._ui.set_status(f'{_("File imported")}: {yw7Path}')
         return True
 
