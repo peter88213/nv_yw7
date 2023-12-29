@@ -45,9 +45,9 @@ class Plugin:
             controller -- reference to the main controller instance of the application.
             ui -- reference to the main view instance of the application.
         """
-        self._model = model
+        self._mdl = model
         self._ui = ui
-        self._controller = controller
+        self._ctrl = controller
         self._prefs = prefs
 
         # Add an entry to the "File > New" menu.
@@ -62,10 +62,10 @@ class Plugin:
         
         Return True on success, otherwise return False.
         """
-        if self._model.prjFile.filePath is None:
+        if self._mdl.prjFile.filePath is None:
             return False
 
-        path, __ = os.path.splitext(self._model.prjFile.filePath)
+        path, __ = os.path.splitext(self._mdl.prjFile.filePath)
         yw7Path = f'{path}{self._YW_CLASS.EXTENSION}'
         if os.path.isfile(yw7Path):
             if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(yw7Path))):
@@ -73,8 +73,8 @@ class Plugin:
                 return False
 
         yw7File = Yw7File(yw7Path)
-        yw7File.novel = self._model.novel
-        yw7File.wcLog = self._model.prjFile.wcLog
+        yw7File.novel = self._mdl.novel
+        yw7File.wcLog = self._mdl.prjFile.wcLog
         try:
             yw7File.write()
         except TypeError as ex:
@@ -112,7 +112,7 @@ class Plugin:
                         self._ui.set_status(f'!{_("Action canceled by user")}.')
                         return False
 
-                self._controller.c_close_project()
+                self._ctrl.c_close_project()
                 yw7File = self._YW_CLASS(yw7Path)
                 yw7File.novel = Novel(tree=NvTree())
                 yw7File.read()
@@ -128,7 +128,7 @@ class Plugin:
             self._ui.set_status(f'!{str(ex)}')
             return False
 
-        self._controller.c_open_project(filePath=novxFile.filePath)
+        self._ctrl.c_open_project(filePath=novxFile.filePath)
         self._ui.set_status(f'{_("File imported")}: {yw7Path}')
         return True
 
