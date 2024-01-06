@@ -112,7 +112,7 @@ class Plugin:
                         self._ui.set_status(f'!{_("Action canceled by user")}.')
                         return False
 
-                self._ctrl.c_close_project()
+                self._ctrl.close_project()
                 yw7File = self._YW_CLASS(yw7Path)
                 yw7File.novel = Novel(tree=NvTree())
                 yw7File.read()
@@ -128,7 +128,7 @@ class Plugin:
             self._ui.set_status(f'!{str(ex)}')
             return False
 
-        self._ctrl.c_open_project(filePath=novxFile.filePath)
+        self._ctrl.open_project(filePath=novxFile.filePath)
         self._ui.set_status(f'{_("File imported")}: {yw7Path}')
         return True
 
