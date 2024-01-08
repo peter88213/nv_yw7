@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.3.0\n"
-"POT-Creation-Date: 2023-12-29 15:29:00\n"
+"Project-Id-Version: 1.0.0\n"
+"POT-Creation-Date: 2024-01-08 18:37:30\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -69,9 +69,6 @@ msgid "Thursday"
 msgstr ""
 
 msgid "Tuesday"
-msgstr ""
-
-msgid "Unnamed link"
 msgstr ""
 
 msgid "Wednesday"

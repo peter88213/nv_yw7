@@ -5,8 +5,8 @@
 ## Changelog
 
 
-### v0.1.0
+### v1.0.0
 
 - Release under the GPLv3 license.
 
-Compatibility: noveltree v4.28 API
+Compatibility: noveltree v1.0 API

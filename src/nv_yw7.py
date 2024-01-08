@@ -31,7 +31,7 @@ except:
 class Plugin:
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    NOVELYST_API = '0.7'
+    NOVELYST_API = '1.0'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://peter88213.github.io/noveltree'
 
@@ -72,6 +72,8 @@ class Plugin:
                 self._ui.set_status(f'!{_("Action canceled by user")}.')
                 return False
 
+        self._ui.restore_status()
+        self._ui.propertiesView.apply_changes()
         yw7File = Yw7File(yw7Path)
         yw7File.novel = self._mdl.novel
         yw7File.wcLog = self._mdl.prjFile.wcLog

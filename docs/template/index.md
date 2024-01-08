@@ -2,7 +2,7 @@
 
 The [noveltree](https://peter88213.github.io/noveltree/) Python program helps authors organize novels.  
 
-*noveltree_yw7* is a plugin providing . 
+*noveltree_yw7* is a plugin providing *.yw7* file import and export. 
 
 ![Screenshot](Screenshots/screen01.png)
 

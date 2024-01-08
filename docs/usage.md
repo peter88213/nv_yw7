@@ -17,6 +17,16 @@ If [noveltree](https://peter88213.github.io/noveltree/) is installed, the setup 
 
 ---
 
+## Create a new *noveltree* project from a yw7 file
+
+*noveltree* main menu: **File > New > Create from yw7...** opens a file selection dialog for
+picking the *.yw7* file. 
+
+## Create a new *.yw7* project file from the current *noveltree* project
+
+*noveltree* main menu: **Export > yw7 project** creates a *.yw7* file with the *noveltree*
+project's name in the project directory.
+
 # License
 
 This is Open Source software, and the *noveltree_yw7* plugin is licensed under GPLv3. See the
