@@ -31,7 +31,7 @@ except:
 class Plugin:
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    NOVELYST_API = '1.0'
+    NOVELTREE_API = '1.0'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://peter88213.github.io/noveltree'
 
