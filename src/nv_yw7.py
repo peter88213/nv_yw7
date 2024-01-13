@@ -33,7 +33,7 @@ class Plugin:
     VERSION = '@release'
     NOVELTREE_API = '1.0'
     DESCRIPTION = 'yw7 file import/export plugin'
-    URL = 'https://peter88213.github.io/noveltree'
+    URL = 'https://peter88213.github.io/noveltree_yw7'
 
     _YW_CLASS = Yw7File
     _NOVX_CLASS = NovxFile
