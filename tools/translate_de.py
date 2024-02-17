@@ -14,7 +14,7 @@ File structure:
 │   └── src/
 │       ├── translations.py
 │       └── msgfmt.py
-└── noveltree_yw7/
+└── nv_yw7/
     ├── src/ 
     ├── tools/ 
     │   └── translate_de.py
@@ -24,10 +24,10 @@ File structure:
         └── locale/
             └─ de/
                └─ LC_MESSAGES/
-                  └─ noveltree_yw7.mo
+                  └─ nv_yw7.mo
     
 Copyright (c) 2024 Peter Triesberger
-For further information see https://github.com/peter88213/noveltree_yw7
+For further information see https://github.com/peter88213/nv_yw7
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
