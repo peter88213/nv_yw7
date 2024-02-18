@@ -1,14 +1,14 @@
-[Project homepage](https://peter88213.github.io/nv_yw7) > Instructions for use
+[Project homepage](https://github.com/peter88213/nv_yw7) > Instructions for use
 
 --- 
 
-A [noveltree](https://peter88213.github.io/noveltree/) plugin. 
+A [noveltree](https://github.com/peter88213/noveltree/) plugin. 
 
 ---
 
 # Installation
 
-If [noveltree](https://peter88213.github.io/noveltree/) is installed, the setup script auto-installs the *nv_yw7* plugin in the *noveltree* plugin directory.
+If [noveltree](https://github.com/peter88213/noveltree/) is installed, the setup script auto-installs the *nv_yw7* plugin in the *noveltree* plugin directory.
 
 
 ---

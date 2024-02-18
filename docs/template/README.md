@@ -1,29 +1,29 @@
 # nv_yw7
 
-The [noveltree](https://peter88213.github.io/noveltree/) Python program helps authors organize novels.  
+The [noveltree](https://github.com/peter88213/noveltree/) Python program helps authors organize novels.  
 
 *nv_yw7* is a plugin providing *.yw7* file import and export. 
 
-![Screenshot](Screenshots/screen01.png)
+![Screenshot](docs/Screenshots/screen01.png)
 
 ## Requirements
 
-- [noveltree](https://peter88213.github.io/noveltree/) version 1.0+
+- [noveltree](https://github.com/peter88213/noveltree/) version 1.8+
 
 ## Download and install
 
-[Download the latest release (version 1.0.2)](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v1.0.2.zip)
+[Download the latest release (version 0.99.0)](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v0.99.0.zip)
 
-- Extract the "nv_yw7_v1.0.2" folder from the downloaded zipfile "nv_yw7_v1.0.2.zip".
+- Extract the "nv_yw7_v0.99.0" folder from the downloaded zipfile "nv_yw7_v0.99.0.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 
 ---
 
-[Changelog](changelog)
+[Changelog](docs/changelog.md)
 
 ## Usage
 
-See the [instructions for use](usage)
+See the [instructions for use](docs/usage.md)
 
 ---
 
