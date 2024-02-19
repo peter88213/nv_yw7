@@ -2,7 +2,7 @@
 
 --- 
 
-A [noveltree](https://github.com/peter88213/noveltree/) plugin. 
+A yw7 file import/export plugin for [noveltree](https://github.com/peter88213/noveltree/). 
 
 ---
 
