@@ -1,4 +1,4 @@
-"""yw7 file import/export plugin for noveltree.
+"""yw7 file import/export plugin for novelibre.
 
 Requires Python 3.6+
 Copyright (c) 2024 Peter Triesberger

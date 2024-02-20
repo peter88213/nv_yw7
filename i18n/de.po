@@ -58,11 +58,11 @@ msgstr "Samstag"
 msgid "Sunday"
 msgstr "Sonntag"
 
-msgid "The project \"{}\" was created with a newer noveltree version."
-msgstr "Das Projekt \"{}\" wurde mit einer neueren Version von noveltree erzeugt."
+msgid "The project \"{}\" was created with a newer novelibre version."
+msgstr "Das Projekt \"{}\" wurde mit einer neueren Version von novelibre erzeugt."
 
-msgid "The project \"{}\" was created with an outdated noveltree version."
-msgstr "Das Projekt \"{}\" wurde mit einer veralteten Version von noveltree erzeugt."
+msgid "The project \"{}\" was created with an outdated novelibre version."
+msgstr "Das Projekt \"{}\" wurde mit einer veralteten Version von novelibre erzeugt."
 
 msgid "Thursday"
 msgstr "Donnerstag"
@@ -73,8 +73,8 @@ msgstr "Dienstag"
 msgid "Wednesday"
 msgstr "Mittwoch"
 
-msgid "noveltree project"
-msgstr "noveltree-Projekt"
+msgid "novelibre project"
+msgstr "novelibre-Projekt"
 
 msgid "unknown"
 msgstr "unbekannt"

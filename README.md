@@ -1,12 +1,12 @@
 [![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v2.0.0.zip)
 [![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
-[![News](docs/img/news-button.png)](https://github.com/peter88213/noveltree/discussions/1)
+[![News](docs/img/news-button.png)](https://github.com/peter88213/novelibre/discussions/1)
 [![Online help](docs/img/help-button.png)](docs/usage.md)
 
 
 # nv_yw7
 
-The [noveltree](https://github.com/peter88213/noveltree/) Python program helps authors organize novels.  
+The [novelibre](https://github.com/peter88213/novelibre/) Python program helps authors organize novels.  
 
 *nv_yw7* is a plugin providing *.yw7* file import and export. 
 
@@ -14,7 +14,7 @@ The [noveltree](https://github.com/peter88213/noveltree/) Python program helps a
 
 ## Requirements
 
-- [noveltree](https://github.com/peter88213/noveltree/) version 2.0+
+- [novelibre](https://github.com/peter88213/novelibre/) version 2.0+
 
 ## Download and install
 

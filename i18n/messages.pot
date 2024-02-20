@@ -59,10 +59,10 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
-msgid "The project \"{}\" was created with a newer noveltree version."
+msgid "The project \"{}\" was created with a newer novelibre version."
 msgstr ""
 
-msgid "The project \"{}\" was created with an outdated noveltree version."
+msgid "The project \"{}\" was created with an outdated novelibre version."
 msgstr ""
 
 msgid "Thursday"
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Wednesday"
 msgstr ""
 
-msgid "noveltree project"
+msgid "novelibre project"
 msgstr ""
 
 msgid "unknown"

@@ -2,13 +2,13 @@
 
 --- 
 
-A yw7 file import/export plugin for [noveltree](https://github.com/peter88213/noveltree/). 
+A yw7 file import/export plugin for [novelibre](https://github.com/peter88213/novelibre/). 
 
 ---
 
 # Installation
 
-If [noveltree](https://github.com/peter88213/noveltree/) is installed, the setup script auto-installs the *nv_yw7* plugin in the *noveltree* plugin directory.
+If [novelibre](https://github.com/peter88213/novelibre/) is installed, the setup script auto-installs the *nv_yw7* plugin in the *novelibre* plugin directory.
 
 
 ---
@@ -17,14 +17,14 @@ If [noveltree](https://github.com/peter88213/noveltree/) is installed, the setup
 
 ---
 
-## Create a new *noveltree* project from a yw7 file
+## Create a new *novelibre* project from a yw7 file
 
-*noveltree* main menu: **File > New > Create from yw7...** opens a file selection dialog for
+*novelibre* main menu: **File > New > Create from yw7...** opens a file selection dialog for
 picking the *.yw7* file. 
 
-## Create a new *.yw7* project file from the current *noveltree* project
+## Create a new *.yw7* project file from the current *novelibre* project
 
-*noveltree* main menu: **Export > yw7 project** creates a *.yw7* file with the *noveltree*
+*novelibre* main menu: **Export > yw7 project** creates a *.yw7* file with the *novelibre*
 project's name in the project directory.
 
 # License
