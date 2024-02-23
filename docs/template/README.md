@@ -4,7 +4,7 @@
 [![Online help](docs/img/help-button.png)](docs/usage.md)
 
 
-# nv_yw7
+# ![Y](icons/yLogo32.png) nv_yw7
 
 The [novelibre](https://github.com/peter88213/novelibre/) Python program helps authors organize novels.  
 
@@ -32,6 +32,10 @@ The [novelibre](https://github.com/peter88213/novelibre/) Python program helps a
 See the [instructions for use](docs/usage.md)
 
 ---
+
+## Credits
+
+- The logo is made using the free *Pusab* font by Ryoichi Tsunekawa, [Flat-it](http://flat-it.com/).
 
 ## License
 
