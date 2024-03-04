@@ -31,7 +31,7 @@ except:
 class Plugin:
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '2.1'
+    API_VERSION = '2.7'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
 
@@ -54,8 +54,8 @@ class Plugin:
         self._ui.newMenu.add_command(label=_('Create from yw7...'), command=self.import_yw7)
 
         # Add an entry to the "Export" menu.
-        self._ui.exportMenu.add_separator()
-        self._ui.exportMenu.add_command(label=_('yw7 project'), command=self.export_yw7)
+        self._ui.exportMenu.insert_command(_('Options'), label=_('yw7 project'), command=self.export_yw7)
+        self._ui.exportMenu.insert_separator(_('Options'))
 
     def export_yw7(self):
         """Export the current project to yw7.

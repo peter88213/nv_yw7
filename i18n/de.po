@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.0\n"
-"POT-Creation-Date: 2024-02-23 11:01:17\n"
-"PO-Revision-Date: 2024-02-23 11:01:17\n"
+"Project-Id-Version: 2.1.1\n"
+"POT-Creation-Date: 2024-03-04 08:28:08\n"
+"PO-Revision-Date: 2024-03-04 08:28:09\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -48,6 +48,9 @@ msgstr "Montag"
 
 msgid "No valid version found in file"
 msgstr "Keine gültige Versionsangabe in der Datei gefunden"
+
+msgid "Options"
+msgstr "Optionen"
 
 msgid "Overwrite existing file \"{}\"?"
 msgstr "Bestehende Datei \"{}\" überschreiben?"
