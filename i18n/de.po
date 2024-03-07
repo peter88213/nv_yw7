@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.1\n"
-"POT-Creation-Date: 2024-03-04 08:28:08\n"
-"PO-Revision-Date: 2024-03-04 08:28:09\n"
+"Project-Id-Version: 3.0.0\n"
+"POT-Creation-Date: 2024-03-07 23:27:41\n"
+"PO-Revision-Date: 2024-03-07 23:27:41\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +15,6 @@ msgstr ""
 
 msgid "Action canceled by user"
 msgstr "Vorgang vom Benutzer abgebrochen"
-
-msgid "Arcs"
-msgstr "Bögen"
 
 msgid "Cannot overwrite file"
 msgstr "Kann Datei nicht überschreiben"
@@ -54,6 +51,9 @@ msgstr "Optionen"
 
 msgid "Overwrite existing file \"{}\"?"
 msgstr "Bestehende Datei \"{}\" überschreiben?"
+
+msgid "Plot lines"
+msgstr "Plotlinien"
 
 msgid "Saturday"
 msgstr "Samstag"

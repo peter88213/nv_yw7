@@ -16,7 +16,7 @@ from novxlib.novx_globals import CURRENT_LANGUAGE
 from novxlib.novx_globals import LOCALE_PATH
 from novxlib.novx_globals import _
 from novxlib.novx_globals import norm_path
-from novxlib.yw.yw7_file import Yw7File
+from nvywlib.yw7_file import Yw7File
 
 APPLICATION = 'yw7 file import/export plugin'
 
@@ -31,7 +31,7 @@ except:
 class Plugin:
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '2.7'
+    API_VERSION = '3.0'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
 

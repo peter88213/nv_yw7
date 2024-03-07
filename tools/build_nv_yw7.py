@@ -24,7 +24,8 @@ os.makedirs(BUILD, exist_ok=True)
 
 
 def main():
-    inliner.run(SOURCE_FILE, TARGET_FILE, 'novxlib', '../../novxlib/src/')
+    inliner.run(SOURCE_FILE, TARGET_FILE, 'nvywlib', '../src/')
+    inliner.run(TARGET_FILE, TARGET_FILE, 'novxlib', '../../novxlib/src/')
     print('Done.')
 
 
