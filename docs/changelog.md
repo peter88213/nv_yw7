@@ -5,6 +5,13 @@
 ## Changelog
 
 
+### v3.0.1
+
+- Replace the novx_to_yw7 module with novxlib.novx_to_shortcode.
+
+Based on novxlib v3.0.0
+Compatibility: novelibre v3.0 API
+
 ### v3.0.0
 
 - Move the yw7 file format support from novxlib to here.

@@ -39,8 +39,8 @@ from novxlib.novx_globals import _
 from novxlib.novx_globals import list_to_string
 from novxlib.novx_globals import norm_path
 from novxlib.novx_globals import string_to_list
+from novxlib.shortcode.novx_to_shortcode import NovxToShortcode
 from novxlib.xml.xml_indent import indent
-from nvywlib.novx_to_yw7 import NovxToYw7
 import xml.etree.ElementTree as ET
 
 
@@ -227,7 +227,7 @@ class Yw7File(File):
         if self.is_locked():
             raise Error(f'{_("yWriter seems to be open. Please close first")}.')
 
-        self._novxParser = NovxToYw7()
+        self._novxParser = NovxToShortcode()
         self._noteCounter = 0
         self._noteNumber = 0
         if self.novel.languages is None:

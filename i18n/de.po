@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0.0\n"
-"POT-Creation-Date: 2024-03-07 23:27:41\n"
-"PO-Revision-Date: 2024-03-07 23:27:41\n"
+"Project-Id-Version: 3.0.1\n"
+"POT-Creation-Date: 2024-03-13 11:18:19\n"
+"PO-Revision-Date: 2024-03-13 11:18:19\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,12 @@ msgstr ""
 msgid "Action canceled by user"
 msgstr "Vorgang vom Benutzer abgebrochen"
 
+msgid "April"
+msgstr "April"
+
+msgid "August"
+msgstr "August"
+
 msgid "Cannot overwrite file"
 msgstr "Kann Datei nicht überschreiben"
 
@@ -24,6 +30,12 @@ msgstr "Kann Datei nicht schreiben"
 
 msgid "Create from yw7..."
 msgstr "Aus yw7 erzeugen..."
+
+msgid "December"
+msgstr "Dezember"
+
+msgid "February"
+msgstr "Februar"
 
 msgid "File"
 msgstr "Datei"
@@ -40,11 +52,32 @@ msgstr "Dateityp wird nicht unterstützt"
 msgid "Friday"
 msgstr "Freitag"
 
+msgid "January"
+msgstr "Januar"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "March"
+msgstr "März"
+
+msgid "May"
+msgstr "Mai"
+
 msgid "Monday"
 msgstr "Montag"
 
 msgid "No valid version found in file"
 msgstr "Keine gültige Versionsangabe in der Datei gefunden"
+
+msgid "November"
+msgstr "November"
+
+msgid "October"
+msgstr "Oktober"
 
 msgid "Options"
 msgstr "Optionen"
@@ -57,6 +90,9 @@ msgstr "Plotlinien"
 
 msgid "Saturday"
 msgstr "Samstag"
+
+msgid "September"
+msgstr "September"
 
 msgid "Sunday"
 msgstr "Sonntag"

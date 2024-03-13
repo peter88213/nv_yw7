@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0.0\n"
-"POT-Creation-Date: 2024-03-07 23:27:41\n"
+"Project-Id-Version: 3.0.1\n"
+"POT-Creation-Date: 2024-03-13 11:18:19\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -17,6 +17,12 @@ msgstr ""
 msgid "Action canceled by user"
 msgstr ""
 
+msgid "April"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
 msgid "Cannot overwrite file"
 msgstr ""
 
@@ -24,6 +30,12 @@ msgid "Cannot write file"
 msgstr ""
 
 msgid "Create from yw7..."
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "February"
 msgstr ""
 
 msgid "File"
@@ -41,10 +53,31 @@ msgstr ""
 msgid "Friday"
 msgstr ""
 
+msgid "January"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
 msgid "Monday"
 msgstr ""
 
 msgid "No valid version found in file"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "October"
 msgstr ""
 
 msgid "Options"
@@ -57,6 +90,9 @@ msgid "Plot lines"
 msgstr ""
 
 msgid "Saturday"
+msgstr ""
+
+msgid "September"
 msgstr ""
 
 msgid "Sunday"
