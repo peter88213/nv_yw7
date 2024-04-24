@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0.1\n"
-"POT-Creation-Date: 2024-03-13 11:18:19\n"
+"Project-Id-Version: 3.0.2\n"
+"POT-Creation-Date: 2024-04-24 13:49:43\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -14,13 +14,13 @@ msgstr ""
 "Generated-By: novxlib pgettext.py 0.3\n"
 
 
+msgid "1st Edit"
+msgstr ""
+
+msgid "2nd Edit"
+msgstr ""
+
 msgid "Action canceled by user"
-msgstr ""
-
-msgid "April"
-msgstr ""
-
-msgid "August"
 msgstr ""
 
 msgid "Cannot overwrite file"
@@ -32,10 +32,10 @@ msgstr ""
 msgid "Create from yw7..."
 msgstr ""
 
-msgid "December"
+msgid "Done"
 msgstr ""
 
-msgid "February"
+msgid "Draft"
 msgstr ""
 
 msgid "File"
@@ -50,37 +50,13 @@ msgstr ""
 msgid "File type is not supported"
 msgstr ""
 
-msgid "Friday"
-msgstr ""
-
-msgid "January"
-msgstr ""
-
-msgid "July"
-msgstr ""
-
-msgid "June"
-msgstr ""
-
-msgid "March"
-msgstr ""
-
-msgid "May"
-msgstr ""
-
-msgid "Monday"
-msgstr ""
-
 msgid "No valid version found in file"
 msgstr ""
 
-msgid "November"
-msgstr ""
-
-msgid "October"
-msgstr ""
-
 msgid "Options"
+msgstr ""
+
+msgid "Outline"
 msgstr ""
 
 msgid "Overwrite existing file \"{}\"?"
@@ -89,28 +65,10 @@ msgstr ""
 msgid "Plot lines"
 msgstr ""
 
-msgid "Saturday"
-msgstr ""
-
-msgid "September"
-msgstr ""
-
-msgid "Sunday"
-msgstr ""
-
 msgid "The project \"{}\" was created with a newer novelibre version."
 msgstr ""
 
 msgid "The project \"{}\" was created with an outdated novelibre version."
-msgstr ""
-
-msgid "Thursday"
-msgstr ""
-
-msgid "Tuesday"
-msgstr ""
-
-msgid "Wednesday"
 msgstr ""
 
 msgid "novelibre project"

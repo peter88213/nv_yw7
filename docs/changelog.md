@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v3.0.2
+
+- Fix a bug where single spaces between emphasized text in section content are lost when writing novx files.
+
+Based on novxlib v3.5.0
+
 ### v3.0.1
 
 - Replace the novx_to_yw7 module with novxlib.novx_to_shortcode.
