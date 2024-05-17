@@ -336,7 +336,7 @@ class Yw7File(File):
                 ET.SubElement(xmlScene, 'LastsMinutes').text = prjScn.lastsMinutes
 
             # Plot related information
-            if prjScn.scPacing == 1:
+            if prjScn.scene == 2:
                 ET.SubElement(xmlScene, 'ReactionScene').text = '-1'
             if prjScn.goal:
                 ET.SubElement(xmlScene, 'Goal').text = prjScn.goal
@@ -1191,12 +1191,23 @@ class Yw7File(File):
             ywScnAssocs = string_to_list(kwVarYw7.get('Field_SceneAssoc', ''))
             prjScn.plotPoints = [f'{PLOT_POINT_PREFIX}{plotPoint}' for plotPoint in ywScnAssocs]
 
+            if xmlScene.find('Goal') is not None:
+                prjScn.goal = xmlScene.find('Goal').text
+
+            if xmlScene.find('Conflict') is not None:
+                prjScn.conflict = xmlScene.find('Conflict').text
+
+            if xmlScene.find('Outcome') is not None:
+                prjScn.outcome = xmlScene.find('Outcome').text
+
             if kwVarYw7.get('Field_CustomAR', None) is not None:
-                prjScn.scPacing = 2
+                prjScn.scene = 3
             elif xmlScene.find('ReactionScene') is not None:
-                prjScn.scPacing = 1
+                prjScn.scene = 2
+            elif prjScn.goal or prjScn.conflict or prjScn.outcome:
+                prjScn.scene = 1
             else:
-                prjScn.scPacing = 0
+                prjScn.scene = 0
 
             # Unused.
             if xmlScene.find('Unused') is not None:
@@ -1267,15 +1278,6 @@ class Yw7File(File):
 
             if xmlScene.find('LastsMinutes') is not None:
                 prjScn.lastsMinutes = xmlScene.find('LastsMinutes').text
-
-            if xmlScene.find('Goal') is not None:
-                prjScn.goal = xmlScene.find('Goal').text
-
-            if xmlScene.find('Conflict') is not None:
-                prjScn.conflict = xmlScene.find('Conflict').text
-
-            if xmlScene.find('Outcome') is not None:
-                prjScn.outcome = xmlScene.find('Outcome').text
 
             # if xmlScene.find('ImageFile') is not None:
             #    prjScn.image = xmlScene.find('ImageFile').text

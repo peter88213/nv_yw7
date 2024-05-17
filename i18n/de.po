@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0.3\n"
-"POT-Creation-Date: 2024-04-24 18:09:52\n"
-"PO-Revision-Date: 2024-04-24 18:09:52\n"
+"Project-Id-Version: 4.0.0\n"
+"POT-Creation-Date: 2024-05-17 12:55:18\n"
+"PO-Revision-Date: 2024-05-17 12:55:18\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,9 @@ msgstr "Dateityp wird nicht unterstützt"
 
 msgid "No valid version found in file"
 msgstr "Keine gültige Versionsangabe in der Datei gefunden"
+
+msgid "No valid xml root element found in file"
+msgstr "Kein gültiges xml-Wurzelelement in der Datei gefunden"
 
 msgid "Options"
 msgstr "Optionen"
