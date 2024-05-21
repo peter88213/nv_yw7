@@ -12,14 +12,7 @@ import os
 import re
 
 from novxlib.file.file import File
-from novxlib.model.basic_element import BasicElement
-from novxlib.model.chapter import Chapter
-from novxlib.model.character import Character
 from novxlib.model.id_generator import create_id
-from novxlib.model.plot_line import PlotLine
-from novxlib.model.plot_point import PlotPoint
-from novxlib.model.section import Section
-from novxlib.model.world_element import WorldElement
 from novxlib.novx_globals import CHAPTER_PREFIX
 from novxlib.novx_globals import CHARACTER_PREFIX
 from novxlib.novx_globals import CH_ROOT
@@ -154,6 +147,7 @@ class Yw7File(File):
         Extends the superclass constructor.
         """
         super().__init__(filePath)
+        self._nvSvc = kwargs['nv_service']
         self.tree = None
         # xml element tree of the yWriter project
         self.wcLog = {}
@@ -623,7 +617,7 @@ class Yw7File(File):
         chIds.append(chId)
         xmlChapter = ET.SubElement(xmlChapters, 'CHAPTER')
         ET.SubElement(xmlChapter, 'ID').text = chId[2:]
-        arcPart = Chapter(title=_('Plot lines'), chLevel=1)
+        arcPart = self._nvSvc.make_chapter(title=_('Plot lines'), chLevel=1)
         build_chapter_subtree(xmlChapter, arcPart, chType=2)
         for plId in self.novel.tree.get_children(PL_ROOT):
             chId = create_id(chIds, prefix=CHAPTER_PREFIX)
@@ -831,7 +825,7 @@ class Yw7File(File):
         for xmlLocation in root.find('LOCATIONS'):
             lcId = f"{LOCATION_PREFIX}{xmlLocation.find('ID').text}"
             self.novel.tree.append(LC_ROOT, lcId)
-            self.novel.locations[lcId] = WorldElement()
+            self.novel.locations[lcId] = self._nvSvc.make_world_element()
 
             if xmlLocation.find('Title') is not None:
                 self.novel.locations[lcId].title = xmlLocation.find('Title').text
@@ -857,7 +851,7 @@ class Yw7File(File):
         for xmlItem in root.find('ITEMS'):
             itId = f"{ITEM_PREFIX}{xmlItem.find('ID').text}"
             self.novel.tree.append(IT_ROOT, itId)
-            self.novel.items[itId] = WorldElement()
+            self.novel.items[itId] = self._nvSvc.make_world_element()
 
             if xmlItem.find('Title') is not None:
                 self.novel.items[itId].title = xmlItem.find('Title').text
@@ -882,7 +876,7 @@ class Yw7File(File):
         self.novel.tree.delete_children(PL_ROOT)
         # This is necessary for re-reading.
         for xmlChapter in root.find('CHAPTERS'):
-            prjChapter = Chapter()
+            prjChapter = self._nvSvc.make_chapter()
 
             if xmlChapter.find('Title') is not None:
                 prjChapter.title = xmlChapter.find('Title').text
@@ -961,7 +955,7 @@ class Yw7File(File):
 
             if shortName:
                 plId = f"{PLOT_LINE_PREFIX}{xmlChapter.find('ID').text}"
-                self.novel.plotLines[plId] = PlotLine()
+                self.novel.plotLines[plId] = self._nvSvc.make_plot_line()
                 self.novel.plotLines[plId].title = prjChapter.title
                 self.novel.plotLines[plId].desc = prjChapter.desc
                 self.novel.plotLines[plId].shortName = shortName
@@ -984,7 +978,7 @@ class Yw7File(File):
         for xmlCharacter in root.find('CHARACTERS'):
             crId = f"{CHARACTER_PREFIX}{xmlCharacter.find('ID').text}"
             self.novel.tree.append(CR_ROOT, crId)
-            self.novel.characters[crId] = Character()
+            self.novel.characters[crId] = self._nvSvc.make_character()
 
             if xmlCharacter.find('Title') is not None:
                 self.novel.characters[crId].title = xmlCharacter.find('Title').text
@@ -1099,7 +1093,7 @@ class Yw7File(File):
                 if xmlProjectnote.find('ID') is not None:
                     pnId = f"{PRJ_NOTE_PREFIX}{xmlProjectnote.find('ID').text}"
                     self.novel.tree.append(PN_ROOT, pnId)
-                    self.novel.projectNotes[pnId] = BasicElement()
+                    self.novel.projectNotes[pnId] = self._nvSvc.make_basic_element()
                     if xmlProjectnote.find('Title') is not None:
                         self.novel.projectNotes[pnId].title = xmlProjectnote.find('Title').text
                     if xmlProjectnote.find('Desc') is not None:
@@ -1133,7 +1127,7 @@ class Yw7File(File):
     def _read_scenes(self, root):
         """ Read attributes at scene level from the xml element tree."""
         for xmlScene in root.find('SCENES'):
-            prjScn = Section()
+            prjScn = self._nvSvc.make_section()
 
             if xmlScene.find('Title') is not None:
                 prjScn.title = xmlScene.find('Title').text
@@ -1313,7 +1307,7 @@ class Yw7File(File):
             if ywScId in self._ywApIds:
                 # it's a plot point
                 ppId = f"{PLOT_POINT_PREFIX}{ywScId}"
-                self.novel.plotPoints[ppId] = PlotPoint(title=prjScn.title,
+                self.novel.plotPoints[ppId] = self._nvSvc.make_plot_point(title=prjScn.title,
                                                       desc=prjScn.desc
                                                       )
                 if ywScnAssocs:

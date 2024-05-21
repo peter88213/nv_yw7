@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.1\n"
-"POT-Creation-Date: 2024-05-18 10:32:03\n"
+"Project-Id-Version: 4.1.0\n"
+"POT-Creation-Date: 2024-05-21 12:23:59\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -13,12 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: novxlib pgettext.py 0.3\n"
 
-
-msgid "1st Edit"
-msgstr ""
-
-msgid "2nd Edit"
-msgstr ""
 
 msgid "Action canceled by user"
 msgstr ""
@@ -30,12 +24,6 @@ msgid "Cannot write file"
 msgstr ""
 
 msgid "Create from yw7..."
-msgstr ""
-
-msgid "Done"
-msgstr ""
-
-msgid "Draft"
 msgstr ""
 
 msgid "File"
@@ -50,31 +38,13 @@ msgstr ""
 msgid "File type is not supported"
 msgstr ""
 
-msgid "No valid version found in file"
-msgstr ""
-
-msgid "No valid xml root element found in file"
-msgstr ""
-
 msgid "Options"
-msgstr ""
-
-msgid "Outline"
 msgstr ""
 
 msgid "Overwrite existing file \"{}\"?"
 msgstr ""
 
 msgid "Plot lines"
-msgstr ""
-
-msgid "The project \"{}\" was created with a newer novelibre version."
-msgstr ""
-
-msgid "The project \"{}\" was created with an outdated novelibre version."
-msgstr ""
-
-msgid "novelibre project"
 msgstr ""
 
 msgid "unknown"
