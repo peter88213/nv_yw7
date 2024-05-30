@@ -13,6 +13,7 @@ from novxlib.novx_globals import CURRENT_LANGUAGE
 from novxlib.novx_globals import LOCALE_PATH
 from novxlib.novx_globals import _
 from novxlib.novx_globals import norm_path
+from nvlib.plugin.plugin_base import PluginBase
 from nvywlib.yw7_file import Yw7File
 
 APPLICATION = 'yw7 file import/export plugin'
@@ -25,10 +26,10 @@ except:
     pass
 
 
-class Plugin:
+class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '4.0'
+    API_VERSION = '4.3'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
 
@@ -36,22 +37,26 @@ class Plugin:
         """Add commands to the view.
         
         Positional arguments:
-            controller -- reference to the main controller instance of the application.
+            model -- reference to the main model instance of the application.
             view -- reference to the main view instance of the application.
-        """
+            controller -- reference to the main controller instance of the application.
+            prefs -- (deprecated) reference to the application's global dictionary with settings and options.
+        
+        Overrides the superclass method.
+       """
         self._mdl = model
         self._ui = view
         self._ctrl = controller
-        self._prefs = prefs
+        self._prefs = controller.get_preferences()
 
         # Add an entry to the "File > New" menu.
-        self._ui.newMenu.add_command(label=_('Create from yw7...'), command=self.import_yw7)
+        self._ui.newMenu.add_command(label=_('Create from yw7...'), command=self._import_yw7)
 
         # Add an entry to the "Export" menu.
-        self._ui.exportMenu.insert_command(_('Options'), label=_('yw7 project'), command=self.export_yw7)
+        self._ui.exportMenu.insert_command(_('Options'), label=_('yw7 project'), command=self._export_yw7)
         self._ui.exportMenu.insert_separator(_('Options'))
 
-    def export_yw7(self):
+    def _export_yw7(self):
         """Export the current project to yw7.
         
         Return True on success, otherwise return False.
@@ -80,7 +85,7 @@ class Plugin:
         self._ui.set_status(f'{_("File exported")}: {yw7Path}')
         return True
 
-    def import_yw7(self, yw7Path=''):
+    def _import_yw7(self, yw7Path=''):
         """Convert a yw7 file to novx and open the novx file.
         
         Return True on success, otherwise return False.
