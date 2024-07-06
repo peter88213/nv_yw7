@@ -18,10 +18,20 @@ The [novelibre](https://github.com/peter88213/novelibre/) Python program helps a
 
 ## Download and install
 
-[Download the latest release (version 4.2.1)](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.1.pyzw)
+### Default: Executable Python zip archive
 
-- Extract the "nv_yw7_v4.2.1" folder from the downloaded zipfile "nv_yw7_v4.2.1.pyzw".
-- Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
+Download the latest release [nv_yw7_v4.2.1.pyzw](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.1.pyzw)
+
+- Launch *nv_yw7_v4.2.1.pyzw* by double-clicking (Windows/Linux desktop),
+- or execute `python nv_yw7_v4.2.1.pyzw` (Windows), resp. `python3 nv_yw7_v4.2.1.pyzw` (Linux) on the command line.
+
+### Alternative: Zip file
+
+The package is also available in zip format: [nv_yw7_v4.2.1.zip](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.1.zip)
+
+- Extract the *nv_yw7_v4.2.1* folder from the downloaded zipfile "nv_yw7_v4.2.1.zip".
+- Move into this new folder and launch *setup.pyw* by double-clicking (Windows/Linux desktop), 
+- or execute `python setup.pyw` (Windows), resp. `python3 setup.pyw` (Linux) on the command line.
 
 ---
 
@@ -29,7 +39,7 @@ The [novelibre](https://github.com/peter88213/novelibre/) Python program helps a
 
 ## Usage
 
-See the [instructions for use](docs/usage.md)
+See the [online manual](docs/usage.md)
 
 ---
 
