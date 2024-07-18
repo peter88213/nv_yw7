@@ -28,12 +28,12 @@ from novxlib.novx_globals import PL_ROOT
 from novxlib.novx_globals import PN_ROOT
 from novxlib.novx_globals import PRJ_NOTE_PREFIX
 from novxlib.novx_globals import SECTION_PREFIX
-from novxlib.novx_globals import _
 from novxlib.novx_globals import list_to_string
 from novxlib.novx_globals import norm_path
 from novxlib.novx_globals import string_to_list
 from novxlib.shortcode.novx_to_shortcode import NovxToShortcode
 from novxlib.xml.xml_indent import indent
+from nvywlib.nvyw7_globals import _
 import xml.etree.ElementTree as ET
 
 

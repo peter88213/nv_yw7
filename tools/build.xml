@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="nv_yw7" basedir=".">
-	<property name="version" value="4.2.2" />
+	<property name="version" value="4.2.3" />
 	<property name="plugin" value="nv_yw7" />
 	
 	<property name="source-path" location="../src" />
