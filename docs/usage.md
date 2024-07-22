@@ -11,21 +11,18 @@ A yw7 file import/export plugin for [novelibre](https://github.com/peter88213/no
 If [novelibre](https://github.com/peter88213/novelibre/) is installed, the setup script *setup.py* installs the *nv_yw7* plugin in the *novelibre* plugin directory.
 
 
+The plugin adds a **Create from yw7...** to the **File > New** submenu,
+and a **yw7 project** to the **Export** menu.
+
 ---
 
 # Operation
 
 ---
 
-## Create a new *novelibre* project from a yw7 file
+See the [online help](https://github.com/peter88213/nv_tlview/tree/main/docs/nv_yw7).
 
-*novelibre* main menu: **File > New > Create from yw7...** opens a file selection dialog for
-picking the *.yw7* file. 
-
-## Create a new *.yw7* project file from the current *novelibre* project
-
-*novelibre* main menu: **Export > yw7 project** creates a *.yw7* file with the *novelibre*
-project's name in the project directory.
+---
 
 # License
 
