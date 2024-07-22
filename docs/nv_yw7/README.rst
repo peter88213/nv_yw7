@@ -6,7 +6,6 @@ nv_yw7
 
 This page refers to the latest `nv_yw7
 <https://github.com/peter88213/nv_yw7/>`__ release.
-You can open it with **Help > Timeline view Online help**.
 
 The plugin adds a **Create from yw7...** to the **File > New** submenu,
 and a **yw7 project** to the **Export** menu.
