@@ -717,7 +717,7 @@ class Yw7File(File):
         else:
             #--- Remove inline raw code from text.
             text = text.replace('<RTFBRK>', '')
-            text = re.sub('\[\/*[h|c|r|s|u]\d*\]', '', text)
+            text = re.sub(r'\[\/*[h|c|r|s|u]\d*\]', '', text)
             # remove highlighting, alignment, strikethrough, and underline tags
             for specialCode in ('HTM', 'TEX', 'RTF', 'epub', 'mobi', 'rtfimg'):
                 text = re.sub(f'\<{specialCode} .+?\/{specialCode}\>', '', text)
@@ -776,11 +776,11 @@ class Yw7File(File):
 
             #--- Convert comments, footnotes, and endnotes.
             if text.find('/*') > 0:
-                text = re.sub('\/\* *@([ef]n\**) (.*?)\*\/', replace_note, text)
-                text = re.sub('\/\*(.*?)\*\/', replace_comment, text)
+                text = re.sub(r'\/\* *@([ef]n\**) (.*?)\*\/', replace_note, text)
+                text = re.sub(r'\/\*(.*?)\*\/', replace_comment, text)
 
             text = f'<p>{text}</p>'
-            text = re.sub('\<p\>\&gt\; (.*?)\<\/p\>', '<p style="quotations">\\1</p>', text)
+            text = re.sub(r'\<p\>\&gt\; (.*?)\<\/p\>', '<p style="quotations">\\1</p>', text)
         return text
 
     def _postprocess_xml_file(self, filePath):
