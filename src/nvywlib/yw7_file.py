@@ -720,7 +720,7 @@ class Yw7File(File):
             text = re.sub(r'\[\/*[h|c|r|s|u]\d*\]', '', text)
             # remove highlighting, alignment, strikethrough, and underline tags
             for specialCode in ('HTM', 'TEX', 'RTF', 'epub', 'mobi', 'rtfimg'):
-                text = re.sub(f'\<{specialCode} .+?\/{specialCode}\>', '', text)
+                text = re.sub(fr'\<{specialCode} .+?\/{specialCode}\>', '', text)
 
             #--- Apply XML predefined entities.
             xmlReplacements = [
