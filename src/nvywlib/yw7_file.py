@@ -33,7 +33,7 @@ from novxlib.novx_globals import norm_path
 from novxlib.novx_globals import string_to_list
 from novxlib.shortcode.novx_to_shortcode import NovxToShortcode
 from novxlib.xml.xml_indent import indent
-from novxlib.xml.xml_open import get_xml_root
+from novxlib.xml.xml_filter import strip_illegal_characters
 from nvywlib.nvyw7_globals import _
 import xml.etree.ElementTree as ET
 
@@ -173,7 +173,25 @@ class Yw7File(File):
 
         self._noteCounter = 0
         self._noteNumber = 0
-        root = get_xml_root(self.filePath)
+        try:
+            try:
+                with open(self.filePath, 'r', encoding='utf-8') as f:
+                    xmlText = f.read()
+            except:
+                # yw7 file may be UTF-16 encoded, with a wrong XML header (yWriter for iOS)
+                with open(self.filePath, 'r', encoding='utf-16') as f:
+                    xmlText = f.read()
+        except:
+            try:
+                self.tree = ET.parse(self.filePath)
+            except Exception as ex:
+                raise Error(f'{_("Can not process file")} - {str(ex)}')
+
+        xmlText = strip_illegal_characters(xmlText)
+        root = ET.fromstring(xmlText)
+        del xmlText
+        # saving memory
+
         self._ywApIds = []
         self.wcLog = {}
         self._read_project(root)

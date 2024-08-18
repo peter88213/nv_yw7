@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### Version 4.2.7
+
+- Reading and parsing utf-16 encoded .yw7 files where the XML header doesn't
+indicate the right encoding (iOS yWriter issue).
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.3
 
 ### Version 4.2.6
 
