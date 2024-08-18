@@ -33,6 +33,7 @@ from novxlib.novx_globals import norm_path
 from novxlib.novx_globals import string_to_list
 from novxlib.shortcode.novx_to_shortcode import NovxToShortcode
 from novxlib.xml.xml_indent import indent
+from novxlib.xml.xml_open import get_xml_root
 from nvywlib.nvyw7_globals import _
 import xml.etree.ElementTree as ET
 
@@ -172,10 +173,9 @@ class Yw7File(File):
 
         self._noteCounter = 0
         self._noteNumber = 0
-        self.tree = ET.parse(self.filePath)
+        root = get_xml_root(self.filePath)
         self._ywApIds = []
         self.wcLog = {}
-        root = self.tree.getroot()
         self._read_project(root)
         self._read_locations(root)
         self._read_items(root)

@@ -5,6 +5,13 @@
 ## Changelog
 
 
+### Version 4.2.6
+
+- Use new routine for safe XML reading.
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.2
+
 ### Version 4.2.5
 
 - Refactor for future Python versions.
