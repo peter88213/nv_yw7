@@ -12,7 +12,7 @@ For English, this is, for example, `en`, for German, it is `de`.
 
 A "message catalog" is a dictionary for the plugin's messages and menu entries.
 
-For creating a message catalog, you download a template with all English messages from [here](https://github.com/peter88213/nv_yw7/blob/main/i18n/messages.pot). 
+For creating a message catalog, you download a template with all English messages from [here](https://github.com/peter88213/nv_nv_yw7/blob/main/i18n/messages.pot). 
 
 
 Rename `messages.pot` to `<your language code>.po`, then give some specific information in the header data by modifying the following lines:
@@ -43,12 +43,12 @@ Before you distribute your translations, you can convert and install the message
 The plugin needs the message catalog in binary format. This is easily achieved using the **msgfmt.py** converter script. 
 You find it in your Python installation, in the **Tools/i18n** subdirectory. If not, you can download the code from [here](https://github.com/python/cpython/blob/main/Tools/i18n/msgfmt.py)
 
-Name the binary file **nv_yw7.mo**. 
+Name the binary file **nv_nv_yw7.mo**. 
 
 
 ### Install your translation for testing
 
-Add a subdirectory tree to **~/.novx/locale**, and place *nv_yw7.mo* there, like this:
+Add a subdirectory tree to **~/.novx/locale**, and place *nv_nv_yw7.mo* there, like this:
 
 ```
 <your home directory>
@@ -56,14 +56,14 @@ Add a subdirectory tree to **~/.novx/locale**, and place *nv_yw7.mo* there, like
     └── locale/
         └─ <language code>/
            └─ LC_MESSAGES/
-              └─ nv_yw7.mo
+              └─ nv_nv_yw7.mo
 ```
 
 Then start *novelibre* and see whether your translation works. 
 
 **NOTE:** At startup, *novelibre* tries to load a message dictionary that fits to the system language. If it doesn't find a matching language code in the *locale* directory, it uses English as default language. 
 
-**HINT:** *nv_yw7* comes with German translations. Look at the `de` directory tree, if you need an example. 
+**HINT:** *nv_nv_yw7* comes with German translations. Look at the `de` directory tree, if you need an example. 
 
 
 ### Contribute your translations
@@ -75,20 +75,32 @@ An easy way may be to put a posting in the [novelibre forum](https://github.com/
 
 ## Development
 
-*nv_yw7* depends on the [novxlib](https://github.com/peter88213/novxlib) library which must be present in your file system. It is organized as an Eclipse PyDev project. The official release branch on GitHub is *main*.
+*nv_nv_yw7* depends on the [novxlib](https://github.com/peter88213/novxlib) and [nv_yw7nv](https://github.com/peter88213/nv_yw7nv) libraries which must be present in your file system. It is organized as an Eclipse PyDev project. The official release branch on GitHub is *main*.
 
-### Mandatory directory structure for building the application script
+### Mandatory directory structure for building the plugin package
 
 ```
 .
+├── novelibre/
+│   ├── i18n/
+│   ├── src/
+│   │   └── nvlib/
+│   └── tools/ 
+│       ├── msgfmt.py
+│       ├── inliner.py
+│       ├── package_builder.py
+│       ├── pgettext.py
+│       ├── translate_de.py
+│       └── translations.py
 ├── novxlib/
 │   └── src/
 │       └── novxlib/
-└── nv_yw7/
+└── nv_nv_yw7/
+    ├── i18n/
     ├── src/
-    ├── test/
+	 │   └── nvnv_ywlib/
     └── tools/ 
-        └── build.xml
+        └── build.py
 ```
 
 ### Conventions
@@ -97,7 +109,11 @@ See https://github.com/peter88213/novxlib/blob/main/docs/conventions.md
 
 ## Development tools
 
-- [Python](https://python.org) version 3.11.
+- [Python](https://python.org) version 3.12.
+- **build.py** starts the building and packaging process.
+
+### Optional IDE
 - [Eclipse IDE](https://eclipse.org) with [PyDev](https://pydev.org) and *EGit*.
-- *Apache Ant* is used for building the application.
+- Apache Ant can be used for starting the **build.py** script.
+
 
