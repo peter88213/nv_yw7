@@ -13,32 +13,32 @@ class XmlFixer(HTMLParser):
 
     def __init__(self):
         super().__init__()
-        self._fixedXml = []
+        self._newXml = []
         self._em = False
         self._strong = False
 
-    def feed(self, rawXml):
+    def feed(self, oldXml):
         """Return an XML string with <em> and <strong> nestings removed.
         
         Overrides the xml.sax.ContentHandler method             
         """
-        super().feed(rawXml)
-        newXml = ''.join(self._fixedXml)
+        super().feed(oldXml)
+        newXml = ''.join(self._newXml)
         newXml = newXml.replace('<strong></strong>', '')
         newXml = newXml.replace('<em></em>', '')
         return newXml
 
     def handle_data(self, data):
-        """Receive notification of character data.
+        """Generally use all character data.
         
-        Overrides the xml.sax.ContentHandler method             
+        Overrides the superclass method             
         """
-        self._fixedXml.append(escape(data))
+        self._newXml.append(escape(data))
 
     def handle_endtag(self, tag):
-        """Signals the end of an element in non-namespace mode.
+        """Skip <em> and <strong> tags that are already closed.
         
-        Overrides the xml.sax.ContentHandler method     
+        Overrides the superclass method             
         """
         if tag == 'em':
             if not self._em:
@@ -50,12 +50,12 @@ class XmlFixer(HTMLParser):
                 return
 
             self._strong = False
-        self._fixedXml.append(f'</{tag}>')
+        self._newXml.append(f'</{tag}>')
 
     def handle_starttag(self, tag, attrs):
-        """Signals the start of an element in non-namespace mode.
+        """Use all tags, except nested <em> and <strong> tags.
         
-        Overrides the xml.sax.ContentHandler method             
+        Overrides the superclass method             
         """
         if tag == 'em':
             if self._em:
@@ -63,12 +63,12 @@ class XmlFixer(HTMLParser):
 
             self._em = True
             if self._strong:
-                self._fixedXml.append(f'</strong>')
+                self._newXml.append(f'</strong>')
                 self._strong = False
         elif tag == 'strong':
             self._strong = True
             if self._em:
-                self._fixedXml.append(f'</em>')
+                self._newXml.append(f'</em>')
                 self._em = False
-        self._fixedXml.append(f'<{tag}>')
+        self._newXml.append(f'<{tag}>')
 
