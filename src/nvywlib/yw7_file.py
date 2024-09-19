@@ -1077,7 +1077,10 @@ class Yw7File(File):
                 if xmlField  is not None:
                     if xmlField.text:
                         kwVarYw7[fieldName] = xmlField.text
-        self.novel.workPhase = int(kwVarYw7.get('Field_WorkPhase', None))
+        try:
+            self.novel.workPhase = int(kwVarYw7.get('Field_WorkPhase', None))
+        except:
+            self.novel.workPhase = None
         self.novel.renumberChapters = kwVarYw7.get('Field_RenumberChapters', False) == '1'
         self.novel.renumberParts = kwVarYw7.get('Field_RenumberParts', False) == '1'
         self.novel.renumberWithinParts = kwVarYw7.get('Field_RenumberWithinParts', False) == '1'
