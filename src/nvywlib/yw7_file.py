@@ -956,7 +956,7 @@ class Yw7File(File):
                     xmlField = xmlChapterFields.find(fieldName)
                     if xmlField  is not None:
                         kwVarYw7[fieldName] = xmlField .text
-            prjChapter.noNumber = kwVarYw7.get('Field_NoNumber', False)
+            prjChapter.noNumber = kwVarYw7.get('Field_NoNumber', False) == '1'
             shortName = kwVarYw7.get('Field_ArcDefinition', '')
 
             # This is for projects written with novelibre v4.3:
@@ -1075,13 +1075,14 @@ class Yw7File(File):
             for fieldName in self.PRJ_KWVAR_YW7:
                 xmlField = xmlProjectFields.find(fieldName)
                 if xmlField  is not None:
-                    kwVarYw7[fieldName] = xmlField .text
-        self.novel.workPhase = kwVarYw7.get('Field_WorkPhase', None)
-        self.novel.renumberChapters = kwVarYw7.get('Field_RenumberChapters', False)
-        self.novel.renumberParts = kwVarYw7.get('Field_RenumberParts', False)
-        self.novel.renumberWithinParts = kwVarYw7.get('Field_RenumberWithinParts', False)
-        self.novel.romanChapterNumbers = kwVarYw7.get('Field_RomanChapterNumbers', False)
-        self.novel.romanPartNumbers = kwVarYw7.get('Field_RomanPartNumbers', False)
+                    if xmlField.text:
+                        kwVarYw7[fieldName] = xmlField.text
+        self.novel.workPhase = int(kwVarYw7.get('Field_WorkPhase', None))
+        self.novel.renumberChapters = kwVarYw7.get('Field_RenumberChapters', False) == '1'
+        self.novel.renumberParts = kwVarYw7.get('Field_RenumberParts', False) == '1'
+        self.novel.renumberWithinParts = kwVarYw7.get('Field_RenumberWithinParts', False) == '1'
+        self.novel.romanChapterNumbers = kwVarYw7.get('Field_RomanChapterNumbers', False) == '1'
+        self.novel.romanPartNumbers = kwVarYw7.get('Field_RomanPartNumbers', False) == '1'
         self.novel.chapterHeadingPrefix = kwVarYw7.get('Field_ChapterHeadingPrefix', '')
         self.novel.chapterHeadingSuffix = kwVarYw7.get('Field_ChapterHeadingSuffix', '')
         self.novel.partHeadingPrefix = kwVarYw7.get('Field_PartHeadingPrefix', '')
@@ -1091,7 +1092,7 @@ class Yw7File(File):
         self.novel.customOutcome = kwVarYw7.get('Field_CustomOutcome', '')
         self.novel.customChrBio = kwVarYw7.get('Field_CustomChrBio', '')
         self.novel.customChrGoals = kwVarYw7.get('Field_CustomChrGoals', '')
-        self.novel.saveWordCount = kwVarYw7.get('Field_SaveWordCount', False)
+        self.novel.saveWordCount = kwVarYw7.get('Field_SaveWordCount', False) == '1'
 
         # This is for projects written with novxlib v7.6 - v7.10:
         field = kwVarYw7.get('Field_LanguageCode', None)

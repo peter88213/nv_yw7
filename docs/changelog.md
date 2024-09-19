@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### Version 4.2.9
+
+- Fix a bug where "boolean" custom fields written with "novelyst" cannot be read. 
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.4
+
 ### Version 4.2.8
 
 - Refactor: Change import order for a quick start.
