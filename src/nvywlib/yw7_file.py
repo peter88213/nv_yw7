@@ -35,6 +35,7 @@ from novxlib.shortcode.novx_to_shortcode import NovxToShortcode
 from novxlib.xml.xml_indent import indent
 from novxlib.xml.xml_filter import strip_illegal_characters
 from nvywlib.nvyw7_globals import _
+from nvywlib.xml_fixer import XmlFixer
 import xml.etree.ElementTree as ET
 
 
@@ -731,74 +732,78 @@ class Yw7File(File):
                     f'<p>{match.group(1)}</p></comment>')
 
         if not text:
-            text = ''
-        else:
-            #--- Remove inline raw code from text.
-            text = text.replace('<RTFBRK>', '')
-            text = re.sub(r'\[\/*[h|c|r|s|u]\d*\]', '', text)
-            # remove highlighting, alignment, strikethrough, and underline tags
-            for specialCode in ('HTM', 'TEX', 'RTF', 'epub', 'mobi', 'rtfimg'):
-                text = re.sub(fr'\<{specialCode} .+?\/{specialCode}\>', '', text)
+            return ''
 
-            #--- Apply XML predefined entities.
-            xmlReplacements = [
-                ('&', '&amp;'),
-                ('>', '&gt;'),
-                ('<', '&lt;'),
-                ("'", '&apos;'),
-                ('"', '&quot;'),
-                ('\n', '</p><p>'),
-                ('[i]', '<em>'),
-                ('[/i]', '</em>'),
-                ('[b]', '<strong>'),
-                ('[/b]', '</strong>'),
-                ]
-            tags = ['i', 'b']
-            if self.novel.languages is None:
-                self.novel.get_languages()
-            for language in self.novel.languages:
-                tags.append(f'lang={language}')
-                xmlReplacements.append((f'[lang={language}]', f'<span xml:lang="{language}">'))
-                xmlReplacements.append((f'[/lang={language}]', '</span>'))
+        #--- Remove inline raw code from text.
+        text = text.replace('<RTFBRK>', '')
+        text = re.sub(r'\[\/*[h|c|r|s|u]\d*\]', '', text)
+        # remove highlighting, alignment, strikethrough, and underline tags
+        for specialCode in ('HTM', 'TEX', 'RTF', 'epub', 'mobi', 'rtfimg'):
+            text = re.sub(fr'\<{specialCode} .+?\/{specialCode}\>', '', text)
 
-            #--- Process markup reaching across linebreaks.
-            newlines = []
-            lines = text.split('\n')
-            isOpen = {}
-            opening = {}
-            closing = {}
+        #--- Apply XML predefined entities.
+        xmlReplacements = [
+            ('&', '&amp;'),
+            ('>', '&gt;'),
+            ('<', '&lt;'),
+            ("'", '&apos;'),
+            ('"', '&quot;'),
+            ('\n', '</p><p>'),
+            ('[i]', '<em>'),
+            ('[/i]', '</em>'),
+            ('[b]', '<strong>'),
+            ('[/b]', '</strong>'),
+            ]
+        tags = ['i', 'b']
+        if self.novel.languages is None:
+            self.novel.get_languages()
+        for language in self.novel.languages:
+            tags.append(f'lang={language}')
+            xmlReplacements.append((f'[lang={language}]', f'<span xml:lang="{language}">'))
+            xmlReplacements.append((f'[/lang={language}]', '</span>'))
+
+        #--- Process markup reaching across linebreaks.
+        newlines = []
+        lines = text.split('\n')
+        isOpen = {}
+        opening = {}
+        closing = {}
+        for tag in tags:
+            isOpen[tag] = False
+            opening[tag] = f'[{tag}]'
+            closing[tag] = f'[/{tag}]'
+        for line in lines:
             for tag in tags:
-                isOpen[tag] = False
-                opening[tag] = f'[{tag}]'
-                closing[tag] = f'[/{tag}]'
-            for line in lines:
-                for tag in tags:
-                    if isOpen[tag]:
-                        if line.startswith('&gt; '):
-                            line = f"&gt; {opening[tag]}{line.lstrip('&gt; ')}"
-                        else:
-                            line = f'{opening[tag]}{line}'
-                        isOpen[tag] = False
-                    while line.count(opening[tag]) > line.count(closing[tag]):
-                        line = f'{line}{closing[tag]}'
-                        isOpen[tag] = True
-                    while line.count(closing[tag]) > line.count(opening[tag]):
+                if isOpen[tag]:
+                    if line.startswith('&gt; '):
+                        line = f"&gt; {opening[tag]}{line.lstrip('&gt; ')}"
+                    else:
                         line = f'{opening[tag]}{line}'
-                    line = line.replace(f'{opening[tag]}{closing[tag]}', '')
-                newlines.append(line)
-            text = '\n'.join(newlines).rstrip()
+                    isOpen[tag] = False
+                while line.count(opening[tag]) > line.count(closing[tag]):
+                    line = f'{line}{closing[tag]}'
+                    isOpen[tag] = True
+                while line.count(closing[tag]) > line.count(opening[tag]):
+                    line = f'{opening[tag]}{line}'
+                line = line.replace(f'{opening[tag]}{closing[tag]}', '')
+            newlines.append(line)
+        text = '\n'.join(newlines).rstrip()
 
-            #--- Apply odt formating.
-            for nv, od in xmlReplacements:
-                text = text.replace(nv, od)
+        #--- Apply odt formating.
+        for nv, od in xmlReplacements:
+            text = text.replace(nv, od)
 
-            #--- Convert comments, footnotes, and endnotes.
-            if text.find('/*') > 0:
-                text = re.sub(r'\/\* *@([ef]n\**) (.*?)\*\/', replace_note, text)
-                text = re.sub(r'\/\*(.*?)\*\/', replace_comment, text)
+        #--- Fix nested tags.
+        fixer = XmlFixer()
+        text = fixer.feed(text)
 
-            text = f'<p>{text}</p>'
-            text = re.sub(r'\<p\>\&gt\; (.*?)\<\/p\>', '<p style="quotations">\\1</p>', text)
+        #--- Convert comments, footnotes, and endnotes.
+        if text.find('/*') > 0:
+            text = re.sub(r'\/\* *@([ef]n\**) (.*?)\*\/', replace_note, text)
+            text = re.sub(r'\/\*(.*?)\*\/', replace_comment, text)
+
+        text = f'<p>{text}</p>'
+        text = re.sub(r'\<p\>\&gt\; (.*?)\<\/p\>', '<p style="quotations">\\1</p>', text)
         return text
 
     def _postprocess_xml_file(self, filePath):
