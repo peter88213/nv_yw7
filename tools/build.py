@@ -12,13 +12,13 @@ import sys
 sys.path.insert(0, f'{os.getcwd()}/../../novelibre/tools')
 from package_builder import PackageBuilder
 
-VERSION = '4.2.11'
+VERSION = '4.2.12'
 
 
 class PluginBuilder(PackageBuilder):
 
     PRJ_NAME = 'nv_yw7'
-    LOCAL_LIB = 'nvywlib'
+    LOCAL_LIB = 'nvyw7lib'
     GERMAN_TRANSLATION = True
 
 
