@@ -40,22 +40,15 @@ class XmlFixer(HTMLParser):
         
         Overrides the superclass method             
         """
-        if tag == 'em':
+        if tag in ('em', 'strong'):
             if not tag in self._format:
+                # formatting area is already closed
                 return
 
-            if  self._format[-1] == 'strong':
-                self._fixedXmlStr.append(f'</strong>')
-                self._format.remove('strong')
+            if  self._format[-1] != tag:
+                self._fixedXmlStr.append(f'</{self._format.pop()}>')
+                # closing overlapping formatting area
 
-            self._format.remove(tag)
-        elif tag == 'strong':
-            if not tag in self._format:
-                return
-
-            if self._format[-1] == 'em':
-                self._fixedXmlStr.append(f'</em>')
-                self._format.remove('em')
             self._format.remove(tag)
         self._fixedXmlStr.append(f'</{tag}>')
 
