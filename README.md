@@ -1,4 +1,4 @@
-[![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.10.pyzw)
+[![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.11.pyzw)
 [![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
 [![News](docs/img/news-button.png)](https://github.com/peter88213/novelibre/discussions/1)
 [![Online help](docs/img/help-button.png)](docs/nv_yw7/)
@@ -20,10 +20,10 @@ The [novelibre](https://github.com/peter88213/novelibre/) Python program helps a
 
 ### Default: Executable Python zip archive
 
-Download the latest release [nv_yw7_v4.2.10.pyzw](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.10.pyzw)
+Download the latest release [nv_yw7_v4.2.11.pyzw](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.11.pyzw)
 
-- Launch *nv_yw7_v4.2.10.pyzw* by double-clicking (Windows/Linux desktop),
-- or execute `python nv_yw7_v4.2.10.pyzw` (Windows), resp. `python3 nv_yw7_v4.2.10.pyzw` (Linux) on the command line.
+- Launch *nv_yw7_v4.2.11.pyzw* by double-clicking (Windows/Linux desktop),
+- or execute `python nv_yw7_v4.2.11.pyzw` (Windows), resp. `python3 nv_yw7_v4.2.11.pyzw` (Linux) on the command line.
 
 #### Important
 
@@ -39,9 +39,9 @@ the zip file.
 
 ### Alternative: Zip file
 
-The package is also available in zip format: [nv_yw7_v4.2.10.zip](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.10.zip)
+The package is also available in zip format: [nv_yw7_v4.2.11.zip](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.2.11.zip)
 
-- Extract the *nv_yw7_v4.2.10* folder from the downloaded zipfile "nv_yw7_v4.2.10.zip".
+- Extract the *nv_yw7_v4.2.11* folder from the downloaded zipfile "nv_yw7_v4.2.11.zip".
 - Move into this new folder and launch *setup.pyw* by double-clicking (Windows/Linux desktop), 
 - or execute `python setup.pyw` (Windows), resp. `python3 setup.pyw` (Linux) on the command line.
 

@@ -793,9 +793,9 @@ class Yw7File(File):
         for nv, od in xmlReplacements:
             text = text.replace(nv, od)
 
-        #--- Fix nested tags.
+        #--- Fix overlapping formatting.
         fixer = XmlFixer()
-        text = fixer.feed(text)
+        text = fixer.get_fixed_xml(text)
 
         #--- Convert comments, footnotes, and endnotes.
         if text.find('/*') > 0:

@@ -9,66 +9,68 @@ from html import escape
 
 
 class XmlFixer(HTMLParser):
-    """Event driven parser that accepts malformed HTML."""
+    """Event driven parser that accepts malformed XML."""
 
     def __init__(self):
         super().__init__()
-        self._newXml = []
-        self._em = False
-        self._strong = False
+        self._fixedXmlStr = []
+        self._format = []
 
-    def feed(self, oldXml):
-        """Return an XML string with <em> and <strong> nestings removed.
+    def get_fixed_xml(self, xmlStr):
+        """Return an XML string with wrong <em> and <strong> nestings fixed.
         
         Overrides the xml.sax.ContentHandler method             
         """
-        super().feed(oldXml)
-        newXml = ''.join(self._newXml)
-        newXml = newXml.replace('<strong></strong>', '')
-        newXml = newXml.replace('<em></em>', '')
-        return newXml
+        self.feed(xmlStr)
+        fixedXmlStr = ''.join(self._fixedXmlStr)
+        fixedXmlStr = fixedXmlStr.replace('<em></em>', '')
+        fixedXmlStr = fixedXmlStr.replace('<strong></strong>', '')
+        fixedXmlStr = fixedXmlStr.replace('<em></em>', '')
+        return fixedXmlStr
 
     def handle_data(self, data):
-        """Generally use all character data.
+        """Generally keep all character data.
         
         Overrides the superclass method             
         """
-        self._newXml.append(escape(data))
+        self._fixedXmlStr.append(escape(data))
 
     def handle_endtag(self, tag):
-        """Skip <em> and <strong> tags that are already closed.
+        """Close <em> and <strong> if needed to avoid overlapping.
         
         Overrides the superclass method             
         """
         if tag == 'em':
-            if not self._em:
+            if not tag in self._format:
                 return
 
-            self._em = False
+            if  self._format[-1] == 'strong':
+                self._fixedXmlStr.append(f'</strong>')
+                self._format.remove('strong')
+
+            self._format.remove(tag)
         elif tag == 'strong':
-            if not self._strong:
+            if not tag in self._format:
                 return
 
-            self._strong = False
-        self._newXml.append(f'</{tag}>')
+            if self._format[-1] == 'em':
+                self._fixedXmlStr.append(f'</em>')
+                self._format.remove('em')
+            self._format.remove(tag)
+        self._fixedXmlStr.append(f'</{tag}>')
 
     def handle_starttag(self, tag, attrs):
-        """Use all tags, except nested <em> and <strong> tags.
+        """Keep all tags, except multiple <em> and <strong>.
         
         Overrides the superclass method             
         """
-        if tag == 'em':
-            if self._em:
+        if tag in ('em', 'strong'):
+            if tag in self._format:
                 return
 
-            self._em = True
-            if self._strong:
-                self._newXml.append(f'</strong>')
-                self._strong = False
-        elif tag == 'strong':
-            self._strong = True
-            if self._em:
-                self._newXml.append(f'</em>')
-                self._em = False
-        self._newXml.append(f'<{tag}>')
+            self._format.append(tag)
+        attrStr = ''
+        for name, value in attrs:
+            attrStr = f'{attrStr} {name}="{value}"'
+        self._fixedXmlStr.append(f'<{tag}{attrStr}>')
 

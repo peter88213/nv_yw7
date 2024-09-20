@@ -4,9 +4,16 @@
 
 ## Changelog
 
+### Version 4.2.11
+
+- Fixing overlapping strong and italic formatting. 
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.4
+
 ### Version 4.2.10
 
-- Fix a regression from v4.2.9 where loading files saved with yWriter raises an exception.
+- Fix a regression from version 4.2.9 where loading files saved with yWriter raises an exception.
 
 Compatibility: novelibre 4.3 API
 Based on novxlib 4.6.4
