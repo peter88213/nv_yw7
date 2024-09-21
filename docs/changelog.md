@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### Version 4.2.13
+
+- Refactor the code.
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.7
+
 ### Version 4.2.12
 
 - Refactor the XmlFixer code.

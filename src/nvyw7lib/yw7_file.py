@@ -706,6 +706,33 @@ class Yw7File(File):
 
     def _convert_to_novx(self, text):
 
+        def fix_multiline_formatting(text, tags):
+            newlines = []
+            lines = text.split('\n')
+            isOpen = {}
+            opening = {}
+            closing = {}
+            for tag in tags:
+                isOpen[tag] = False
+                opening[tag] = f'[{tag}]'
+                closing[tag] = f'[/{tag}]'
+            for line in lines:
+                for tag in tags:
+                    if isOpen[tag]:
+                        if line.startswith('&gt; '):
+                            line = f"&gt; {opening[tag]}{line.lstrip('&gt; ')}"
+                        else:
+                            line = f'{opening[tag]}{line}'
+                        isOpen[tag] = False
+                    while line.count(opening[tag]) > line.count(closing[tag]):
+                        line = f'{line}{closing[tag]}'
+                        isOpen[tag] = True
+                    while line.count(closing[tag]) > line.count(opening[tag]):
+                        line = f'{opening[tag]}{line}'
+                    line = line.replace(f'{opening[tag]}{closing[tag]}', '')
+                newlines.append(line)
+            return '\n'.join(newlines).rstrip()
+
         def replace_note(match):
             noteType = match.group(1)
             self._noteCounter += 1
@@ -763,31 +790,7 @@ class Yw7File(File):
             xmlReplacements.append((f'[/lang={language}]', '</span>'))
 
         #--- Process markup reaching across linebreaks.
-        newlines = []
-        lines = text.split('\n')
-        isOpen = {}
-        opening = {}
-        closing = {}
-        for tag in tags:
-            isOpen[tag] = False
-            opening[tag] = f'[{tag}]'
-            closing[tag] = f'[/{tag}]'
-        for line in lines:
-            for tag in tags:
-                if isOpen[tag]:
-                    if line.startswith('&gt; '):
-                        line = f"&gt; {opening[tag]}{line.lstrip('&gt; ')}"
-                    else:
-                        line = f'{opening[tag]}{line}'
-                    isOpen[tag] = False
-                while line.count(opening[tag]) > line.count(closing[tag]):
-                    line = f'{line}{closing[tag]}'
-                    isOpen[tag] = True
-                while line.count(closing[tag]) > line.count(opening[tag]):
-                    line = f'{opening[tag]}{line}'
-                line = line.replace(f'{opening[tag]}{closing[tag]}', '')
-            newlines.append(line)
-        text = '\n'.join(newlines).rstrip()
+        text = fix_multiline_formatting(text, tags)
 
         #--- Apply odt formating.
         for nv, od in xmlReplacements:

@@ -11,14 +11,14 @@ from html import escape
 class XmlFixer(HTMLParser):
     """Event driven parser that accepts malformed XML."""
 
-    def __init__(self, formatTags):
+    def __init__(self, tags):
         """Set the format tags that must not overlap.
         
         Positional arguments:
-            formatTags: set of str, e.g. ('em', 'strong')
+            tags: set of str, e.g. ('em', 'strong')
         """
         super().__init__()
-        self._formatTags = formatTags
+        self._formatTags = tags
         # set of formatting tags to consider
         self._fixedXmlStr = []
         # list of processed lines
