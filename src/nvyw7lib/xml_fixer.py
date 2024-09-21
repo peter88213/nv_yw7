@@ -11,57 +11,64 @@ from html import escape
 class XmlFixer(HTMLParser):
     """Event driven parser that accepts malformed XML."""
 
-    def __init__(self):
-        super().__init__()
-        self._fixedXmlStr = []
-        self._format = []
-
-    def get_fixed_xml(self, xmlStr):
-        """Return an XML string with wrong <em> and <strong> nestings fixed.
+    def __init__(self, formatTags):
+        """Set the format tags that must not overlap.
         
-        Overrides the xml.sax.ContentHandler method             
+        Positional arguments:
+            formatTags: set of str, e.g. ('em', 'strong')
+        """
+        super().__init__()
+        self._formatTags = formatTags
+        # set of formatting tags to consider
+        self._fixedXmlStr = []
+        # list of processed lines
+        self._format = []
+        # stack for nested formattings
+
+    def fixed(self, xmlStr):
+        """Return an XML string with wrong format nestings fixed.
+        
+        Overrides the superclass method             
         """
         self.feed(xmlStr)
-        fixedXmlStr = ''.join(self._fixedXmlStr)
-        fixedXmlStr = fixedXmlStr.replace('<em></em>', '')
-        fixedXmlStr = fixedXmlStr.replace('<strong></strong>', '')
-        fixedXmlStr = fixedXmlStr.replace('<em></em>', '')
-        return fixedXmlStr
+        return ''.join(self._fixedXmlStr)
 
     def handle_data(self, data):
-        """Generally keep all character data.
+        """Generally keep all character data. 
         
+        Escape characters reserved for XML.
         Overrides the superclass method             
         """
         self._fixedXmlStr.append(escape(data))
 
     def handle_endtag(self, tag):
-        """Close <em> and <strong> if needed to avoid overlapping.
+        """Close formatting areas if needed to avoid overlapping.
         
         Overrides the superclass method             
         """
-        if tag in ('em', 'strong'):
+        if tag in self._formatTags:
             if not tag in self._format:
                 # formatting area is already closed
                 return
 
-            if  self._format[-1] != tag:
+            while  self._format[-1] != tag:
                 self._fixedXmlStr.append(f'</{self._format.pop()}>')
                 # closing overlapping formatting area
-
-            self._format.remove(tag)
+            self._format.pop()
+            # removing the tag from the stack
         self._fixedXmlStr.append(f'</{tag}>')
 
     def handle_starttag(self, tag, attrs):
-        """Keep all tags, except multiple <em> and <strong>.
+        """Keep all tags, except multiple formatting tags of the same kind.
         
         Overrides the superclass method             
         """
-        if tag in ('em', 'strong'):
+        if tag in self._formatTags:
             if tag in self._format:
                 return
 
             self._format.append(tag)
+            # pushing the tag on the stack
         attrStr = ''
         for name, value in attrs:
             attrStr = f'{attrStr} {name}="{value}"'

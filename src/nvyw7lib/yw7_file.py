@@ -794,8 +794,12 @@ class Yw7File(File):
             text = text.replace(nv, od)
 
         #--- Fix overlapping formatting.
-        fixer = XmlFixer()
-        text = fixer.get_fixed_xml(text)
+        text = XmlFixer(('em', 'strong')).fixed(text)
+
+        #--- Remove empty format areas.
+        text = text.replace('<em></em>', '')
+        text = text.replace('<strong></strong>', '')
+        text = text.replace('<em></em>', '')
 
         #--- Convert comments, footnotes, and endnotes.
         if text.find('/*') > 0:
