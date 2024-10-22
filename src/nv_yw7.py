@@ -13,8 +13,6 @@ from novxlib.novx_globals import norm_path
 from nvlib.plugin.plugin_base import PluginBase
 from nvyw7lib.yw7_file import Yw7File
 
-APPLICATION = 'yw7 file import/export plugin'
-
 
 class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
