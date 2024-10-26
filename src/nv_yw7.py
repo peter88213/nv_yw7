@@ -17,7 +17,7 @@ from nvyw7lib.yw7_file import Yw7File
 class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '4.3'
+    API_VERSION = '4.12'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
 
@@ -58,7 +58,7 @@ class Plugin(PluginBase):
         yw7Path = f'{path}{Yw7File.EXTENSION}'
         if os.path.isfile(yw7Path):
             if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(yw7Path))):
-                self._ui.set_status(f'!{_("Action canceled by user")}.')
+                self._ui.set_status(f'#{_("Action canceled by user")}.')
                 return False
 
         self._ui.restore_status()
@@ -100,7 +100,7 @@ class Plugin(PluginBase):
                 novxPath = f'{filePath}{self._mdl.nvService.get_novx_file_extension()}'
                 if os.path.isfile(novxPath):
                     if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(novxPath))):
-                        self._ui.set_status(f'!{_("Action canceled by user")}.')
+                        self._ui.set_status(f'#{_("Action canceled by user")}.')
                         return False
 
                 self._ctrl.close_project()

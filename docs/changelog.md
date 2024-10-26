@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### Version 4.3.0
+
+- Use the new  notification prefix for the "Action canceled by user" message.
+
+Compatibility: novelibre 4.12 API
+Based on novxlib 4.8.0
+
 ### Version 4.2.13
 
 - Refactor the code.
