@@ -32,8 +32,8 @@ from novxlib.novx_globals import list_to_string
 from novxlib.novx_globals import norm_path
 from novxlib.novx_globals import string_to_list
 from novxlib.shortcode.novx_to_shortcode import NovxToShortcode
-from novxlib.xml.xml_indent import indent
 from novxlib.xml.xml_filter import strip_illegal_characters
+from novxlib.xml.xml_indent import indent
 from nvyw7lib.nvyw7_globals import _
 from nvyw7lib.xml_fixer import XmlFixer
 import xml.etree.ElementTree as ET
