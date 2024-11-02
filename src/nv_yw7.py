@@ -21,7 +21,7 @@ class Plugin(PluginBase):
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
 
-    def install(self, model, view, controller, prefs=None):
+    def install(self, model, view, controller):
         """Add commands to the view.
         
         Positional arguments:
