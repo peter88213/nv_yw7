@@ -11,10 +11,10 @@ from html import unescape
 import os
 import re
 
-from nvlib.model.xml.xml_filter import strip_illegal_characters
-from nvlib.model.xml.xml_indent import indent
 from nvlib.model.data.id_generator import create_id
 from nvlib.model.file.file import File
+from nvlib.model.xml.xml_filter import strip_illegal_characters
+from nvlib.model.xml.xml_indent import indent
 from nvlib.novx_globals import CHAPTER_PREFIX
 from nvlib.novx_globals import CHARACTER_PREFIX
 from nvlib.novx_globals import CH_ROOT
