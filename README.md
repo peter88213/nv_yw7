@@ -1,6 +1,6 @@
 [![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v4.3.0.pyzw)
 [![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
-[![News](docs/img/news-button.png)](https://github.com/peter88213/novelibre/discussions/1)
+[![News/Feedback](docs/img/news-button.png)](https://github.com/peter88213/novelibre/discussions)
 [![Online help](docs/img/help-button.png)](docs/nv_yw7/)
 
 
