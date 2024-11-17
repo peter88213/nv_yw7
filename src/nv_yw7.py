@@ -32,11 +32,9 @@ class Plugin(PluginBase):
         Optional arguments:
             prefs -- deprecated. Please use controller.get_preferences() instead.
         
-        Overrides the superclass method.
-       """
-        self._mdl = model
-        self._ui = view
-        self._ctrl = controller
+        Extends the superclass method.
+        """
+        super().install(model, view, controller)
         self._prefs = controller.get_preferences()
 
         # Add an entry to the "File > New" menu.
