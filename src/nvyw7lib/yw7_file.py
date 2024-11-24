@@ -11,7 +11,7 @@ from html import unescape
 import os
 import re
 
-from nvlib.model.data.id_generator import create_id
+from nvlib.model.data.id_generator import new_id
 from nvlib.model.file.file import File
 from nvlib.model.xml.xml_filter import strip_illegal_characters
 from nvlib.model.xml.xml_indent import indent
@@ -442,7 +442,7 @@ class Yw7File(File):
         def add_projectvariable(title, desc, tags):
             # Note:
             # prjVars, xmlProjectvars are caller's variables
-            pvId = create_id(prjVars)
+            pvId = new_id(prjVars)
             prjVars.append(pvId)
             # side effect
             xmlProjectvar = ET.SubElement(xmlProjectvars, 'PROJECTVAR')
@@ -611,7 +611,7 @@ class Yw7File(File):
         newScIds = {}
         # new scene IDs by plot point ID
         for ppId in self.novel.plotPoints:
-            scId = create_id(scIds, prefix=SECTION_PREFIX)
+            scId = new_id(scIds, prefix=SECTION_PREFIX)
             scIds.append(scId)
             newScIds[ppId] = scId
             xmlScene = ET.SubElement(xmlScenes, 'SCENE')
@@ -632,14 +632,14 @@ class Yw7File(File):
                     ET.SubElement(xmlScnList, 'ScID').text = scId[2:]
 
         #--- Process plot lines.
-        chId = create_id(chIds, prefix=CHAPTER_PREFIX)
+        chId = new_id(chIds, prefix=CHAPTER_PREFIX)
         chIds.append(chId)
         xmlChapter = ET.SubElement(xmlChapters, 'CHAPTER')
         ET.SubElement(xmlChapter, 'ID').text = chId[2:]
-        arcPart = self._nvSvc.make_chapter(title=_('Plot lines'), chLevel=1)
+        arcPart = self._nvSvc.new_chapter(title=_('Plot lines'), chLevel=1)
         build_chapter_subtree(xmlChapter, arcPart, chType=2)
         for plId in self.novel.tree.get_children(PL_ROOT):
-            chId = create_id(chIds, prefix=CHAPTER_PREFIX)
+            chId = new_id(chIds, prefix=CHAPTER_PREFIX)
             chIds.append(chId)
             xmlChapter = ET.SubElement(xmlChapters, 'CHAPTER')
             ET.SubElement(xmlChapter, 'ID').text = chId[2:]
@@ -855,7 +855,7 @@ class Yw7File(File):
         for xmlLocation in root.find('LOCATIONS'):
             lcId = f"{LOCATION_PREFIX}{xmlLocation.find('ID').text}"
             self.novel.tree.append(LC_ROOT, lcId)
-            self.novel.locations[lcId] = self._nvSvc.make_world_element()
+            self.novel.locations[lcId] = self._nvSvc.new_world_element()
 
             if xmlLocation.find('Title') is not None:
                 self.novel.locations[lcId].title = xmlLocation.find('Title').text
@@ -881,7 +881,7 @@ class Yw7File(File):
         for xmlItem in root.find('ITEMS'):
             itId = f"{ITEM_PREFIX}{xmlItem.find('ID').text}"
             self.novel.tree.append(IT_ROOT, itId)
-            self.novel.items[itId] = self._nvSvc.make_world_element()
+            self.novel.items[itId] = self._nvSvc.new_world_element()
 
             if xmlItem.find('Title') is not None:
                 self.novel.items[itId].title = xmlItem.find('Title').text
@@ -906,7 +906,7 @@ class Yw7File(File):
         self.novel.tree.delete_children(PL_ROOT)
         # This is necessary for re-reading.
         for xmlChapter in root.find('CHAPTERS'):
-            prjChapter = self._nvSvc.make_chapter()
+            prjChapter = self._nvSvc.new_chapter()
 
             if xmlChapter.find('Title') is not None:
                 prjChapter.title = xmlChapter.find('Title').text
@@ -985,7 +985,7 @@ class Yw7File(File):
 
             if shortName:
                 plId = f"{PLOT_LINE_PREFIX}{xmlChapter.find('ID').text}"
-                self.novel.plotLines[plId] = self._nvSvc.make_plot_line()
+                self.novel.plotLines[plId] = self._nvSvc.new_plot_line()
                 self.novel.plotLines[plId].title = prjChapter.title
                 self.novel.plotLines[plId].desc = prjChapter.desc
                 self.novel.plotLines[plId].shortName = shortName
@@ -1008,7 +1008,7 @@ class Yw7File(File):
         for xmlCharacter in root.find('CHARACTERS'):
             crId = f"{CHARACTER_PREFIX}{xmlCharacter.find('ID').text}"
             self.novel.tree.append(CR_ROOT, crId)
-            self.novel.characters[crId] = self._nvSvc.make_character()
+            self.novel.characters[crId] = self._nvSvc.new_character()
 
             if xmlCharacter.find('Title') is not None:
                 self.novel.characters[crId].title = xmlCharacter.find('Title').text
@@ -1127,7 +1127,7 @@ class Yw7File(File):
                 if xmlProjectnote.find('ID') is not None:
                     pnId = f"{PRJ_NOTE_PREFIX}{xmlProjectnote.find('ID').text}"
                     self.novel.tree.append(PN_ROOT, pnId)
-                    self.novel.projectNotes[pnId] = self._nvSvc.make_basic_element()
+                    self.novel.projectNotes[pnId] = self._nvSvc.new_basic_element()
                     if xmlProjectnote.find('Title') is not None:
                         self.novel.projectNotes[pnId].title = xmlProjectnote.find('Title').text
                     if xmlProjectnote.find('Desc') is not None:
@@ -1161,7 +1161,7 @@ class Yw7File(File):
     def _read_scenes(self, root):
         """ Read attributes at scene level from the xml element tree."""
         for xmlScene in root.find('SCENES'):
-            prjScn = self._nvSvc.make_section()
+            prjScn = self._nvSvc.new_section()
 
             if xmlScene.find('Title') is not None:
                 prjScn.title = xmlScene.find('Title').text
@@ -1341,7 +1341,7 @@ class Yw7File(File):
             if ywScId in self._ywApIds:
                 # it's a plot point
                 ppId = f"{PLOT_POINT_PREFIX}{ywScId}"
-                self.novel.plotPoints[ppId] = self._nvSvc.make_plot_point(title=prjScn.title,
+                self.novel.plotPoints[ppId] = self._nvSvc.new_plot_point(title=prjScn.title,
                                                       desc=prjScn.desc
                                                       )
                 if ywScnAssocs:

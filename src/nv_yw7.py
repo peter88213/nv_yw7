@@ -103,9 +103,9 @@ class Plugin(PluginBase):
 
                 self._ctrl.close_project()
                 yw7File = Yw7File(yw7Path, nv_service=self._mdl.nvService)
-                yw7File.novel = self._mdl.nvService.make_novel()
+                yw7File.novel = self._mdl.nvService.new_novel()
                 yw7File.read()
-                novxFile = self._mdl.nvService.make_novx_file(novxPath, nv_service=self._mdl.nvService)
+                novxFile = self._mdl.nvService.new_novx_file(novxPath, nv_service=self._mdl.nvService)
                 novxFile.novel = yw7File.novel
                 novxFile.wcLog = yw7File.wcLog
                 novxFile.write()
