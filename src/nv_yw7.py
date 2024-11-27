@@ -83,9 +83,8 @@ class Plugin(PluginBase):
         if not initDir:
             initDir = './'
         if not yw7Path or not os.path.isfile(yw7Path):
-            fileTypes = [(Yw7File.DESCRIPTION, Yw7File.EXTENSION)]
             yw7Path = filedialog.askopenfilename(
-                filetypes=fileTypes,
+                filetypes=[(Yw7File.DESCRIPTION, Yw7File.EXTENSION)],
                 defaultextension=Yw7File.EXTENSION,
                 initialdir=initDir
                 )
