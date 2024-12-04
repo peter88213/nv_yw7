@@ -75,8 +75,6 @@ An easy way may be to put a posting in the [novelibre forum](https://github.com/
 
 ## Development
 
-*nv_nv_yw7* depends on the [novxlib](https://github.com/peter88213/novxlib) and [nv_yw7nv](https://github.com/peter88213/nv_yw7nv) libraries which must be present in your file system. It is organized as an Eclipse PyDev project. The official release branch on GitHub is *main*.
-
 ### Mandatory directory structure for building the plugin package
 
 ```
@@ -92,9 +90,6 @@ An easy way may be to put a posting in the [novelibre forum](https://github.com/
 │       ├── pgettext.py
 │       ├── translate_de.py
 │       └── translations.py
-├── novxlib/
-│   └── src/
-│       └── novxlib/
 └── nv_nv_yw7/
     ├── i18n/
     ├── src/
