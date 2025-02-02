@@ -8,9 +8,9 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 import os
 from tkinter import filedialog
 
+from nvyw7lib.nvyw7_globals import _
 from nvlib.controller.plugin.plugin_base import PluginBase
 from nvlib.novx_globals import norm_path
-from nvyw7lib.nvyw7_globals import _
 from nvyw7lib.yw7_file import Yw7File
 
 
