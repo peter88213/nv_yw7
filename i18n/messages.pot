@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.0.2\n"
-"POT-Creation-Date: 2024-12-17 12:39:35\n"
+"Project-Id-Version: 5.1.0\n"
+"POT-Creation-Date: 2025-03-21 19:25:38\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -41,10 +41,19 @@ msgstr ""
 msgid "File type is not supported"
 msgstr ""
 
+msgid "Major Character"
+msgstr ""
+
+msgid "Minor Character"
+msgstr ""
+
 msgid "Options"
 msgstr ""
 
-msgid "Overwrite existing file \"{}\"?"
+msgid "Overwrite existing novelibre file?"
+msgstr ""
+
+msgid "Overwrite existing yWriter file?"
 msgstr ""
 
 msgid "Plot lines"

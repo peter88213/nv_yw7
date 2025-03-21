@@ -4,6 +4,14 @@
 
 ## Changelog
 
+### Version 5.1.0
+
+- Updated the messaging.
+- Refactored the code, changing the import order.
+
+API: 5.17
+Based on novelibre 5.17.3
+
 ### Version 5.0.2
 
 Library update:

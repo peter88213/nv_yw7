@@ -17,7 +17,7 @@ from nvyw7lib.yw7_file import Yw7File
 class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '5.0'
+    API_VERSION = '5.17'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
 
@@ -52,7 +52,10 @@ class Plugin(PluginBase):
         path, __ = os.path.splitext(self._mdl.prjFile.filePath)
         yw7Path = f'{path}{Yw7File.EXTENSION}'
         if os.path.isfile(yw7Path):
-            if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(yw7Path))):
+            if not self._ui.ask_yes_no(
+                message=_('Overwrite existing yWriter file?'),
+                detail=norm_path(yw7Path)
+                ):
                 self._ui.set_status(f'#{_("Action canceled by user")}.')
                 return False
 
@@ -93,7 +96,10 @@ class Plugin(PluginBase):
             if extension == Yw7File.EXTENSION:
                 novxPath = f'{filePath}{self._mdl.nvService.get_novx_file_extension()}'
                 if os.path.isfile(novxPath):
-                    if not self._ui.ask_yes_no(_('Overwrite existing file "{}"?').format(norm_path(novxPath))):
+                    if not self._ui.ask_yes_no(
+                        message=_('Overwrite existing novelibre file?'),
+                        detail=norm_path(novxPath)
+                        ):
                         self._ui.set_status(f'#{_("Action canceled by user")}.')
                         return False
 

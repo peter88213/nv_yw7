@@ -1,11 +1,11 @@
 # nv_yw7 Dictionary (English-German)
-# Copyright (C) 2022 Peter Triesberger
+# Copyright (C) 2025 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.0.2\n"
-"POT-Creation-Date: 2024-12-17 12:39:35\n"
-"PO-Revision-Date: 2024-12-17 12:39:35\n"
+"Project-Id-Version: 5.1.0\n"
+"POT-Creation-Date: 2025-03-21 19:25:38\n"
+"PO-Revision-Date: 2025-03-21 19:25:38\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -40,11 +40,20 @@ msgstr "Datei importiert"
 msgid "File type is not supported"
 msgstr "Dateityp wird nicht unterstützt"
 
+msgid "Major Character"
+msgstr "Hauptfigur"
+
+msgid "Minor Character"
+msgstr "Nebenfigur"
+
 msgid "Options"
 msgstr "Optionen"
 
-msgid "Overwrite existing file \"{}\"?"
-msgstr "Bestehende Datei \"{}\" überschreiben?"
+msgid "Overwrite existing novelibre file?"
+msgstr "Bestehende novelibre-Datei überschreiben?"
+
+msgid "Overwrite existing yWriter file?"
+msgstr "Bestehende yWriter-Datei überschreiben?"
 
 msgid "Plot lines"
 msgstr "Plotlinien"
