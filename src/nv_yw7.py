@@ -17,7 +17,7 @@ from nvyw7lib.yw7_file import Yw7File
 class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '5.17'
+    API_VERSION = '5.18'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
 
@@ -89,6 +89,9 @@ class Plugin(PluginBase):
                 initialdir=initDir
                 )
         if not yw7Path:
+            return False
+
+        if not self._ctrl.close_project():
             return False
 
         try:
