@@ -8,7 +8,7 @@ A yw7 file import/export plugin for [novelibre](https://github.com/peter88213/no
 
 # Installation
 
-If [novelibre](https://github.com/peter88213/novelibre/) is installed, the setup script *setup.py* installs the *nv_yw7* plugin in the *novelibre* plugin directory.
+If [novelibre](https://github.com/peter88213/novelibre/) is installed, the setup script *setup.pyw* installs the *nv_yw7* plugin in the *novelibre* plugin directory.
 
 
 The plugin adds a **Create from yw7...** to the **File > New** submenu,
