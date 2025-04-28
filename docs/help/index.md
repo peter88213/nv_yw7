@@ -6,10 +6,12 @@
 # User guide
 
 This page refers to the latest
-[nv_yw7](https://github.com/peter88213/nv_yw7/) release.
+[nv_yw7](https://github.com/peter88213/nv_yw7/) release. 
+You can open it with **Help \> yw7 plugin Online help**.
 
 The plugin adds a **Create from yw7\...** to the **File \> New**
-submenu, and a **yw7 project** to the **Export** menu.
+submenu, and a **yw7 project** to the **Export** menu,
+and a **yw plugin Online Help** entry to the **Help** menu.
 
 
 

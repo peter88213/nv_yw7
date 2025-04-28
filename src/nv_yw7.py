@@ -7,6 +7,7 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
 from tkinter import filedialog
+import webbrowser
 
 from nvyw7lib.nvyw7_globals import _
 from nvlib.controller.plugin.plugin_base import PluginBase
@@ -20,6 +21,7 @@ class Plugin(PluginBase):
     API_VERSION = '5.18'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
+    HELP_URL = _('https://peter88213.github.io/nv_yw7/help/')
 
     def install(self, model, view, controller):
         """Add commands to the view.
@@ -40,6 +42,9 @@ class Plugin(PluginBase):
         # Add an entry to the "Export" menu.
         self._ui.exportMenu.insert_command(_('Options'), label=_('yw7 project'), command=self._export_yw7)
         self._ui.exportMenu.insert_separator(_('Options'))
+
+        # Add an entry to the Help menu.
+        self._ui.helpMenu.add_command(label=_('yw7 plugin Online help'), command=self.open_help)
 
     def _export_yw7(self):
         """Export the current project to yw7.
@@ -125,4 +130,7 @@ class Plugin(PluginBase):
         self._ctrl.open_project(filePath=novxFile.filePath)
         self._ui.set_status(f'{_("File imported")}: {yw7Path}')
         return True
+
+    def open_help(self):
+        webbrowser.open(self.HELP_URL)
 

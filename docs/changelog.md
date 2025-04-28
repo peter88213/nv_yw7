@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.2.0
+
+- Providing online help via the "Help" menu.
+
+API: 5.18
+Based on novelibre 5.23.0
+
+
 ### Version 5.1.1
 
 - Fix a bug where the **File > New > Create from yw7...** command cannot be properly aborted.

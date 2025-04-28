@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.1.1\n"
-"POT-Creation-Date: 2025-03-30 15:59:20\n"
+"Project-Id-Version: 5.2.0\n"
+"POT-Creation-Date: 2025-04-28 12:46:30\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -59,6 +59,9 @@ msgstr ""
 msgid "Plot lines"
 msgstr ""
 
+msgid "https://peter88213.github.io/nv_yw7/help/"
+msgstr ""
+
 msgid "unknown"
 msgstr ""
 
@@ -66,6 +69,9 @@ msgid "yWriter 7 project"
 msgstr ""
 
 msgid "yWriter seems to be open. Please close first"
+msgstr ""
+
+msgid "yw7 plugin Online help"
 msgstr ""
 
 msgid "yw7 project"
