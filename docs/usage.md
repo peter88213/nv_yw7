@@ -20,7 +20,7 @@ and a **yw7 project** to the **Export** menu.
 
 ---
 
-See the [online help](https://github.com/peter88213/nv_yw7/tree/main/docs/nv_yw7).
+See the [user guide](https://peter88213.github.io/nv_yw7/help/).
 
 ---
 

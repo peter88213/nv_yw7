@@ -1,7 +1,7 @@
 [![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v0.99.0.pyzw)
 [![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
 [![News/Feedback](docs/img/news-button.png)](https://github.com/peter88213/novelibre/discussions)
-[![Online help](docs/img/help-button.png)](docs/nv_yw7/)
+[![Online help](docs/img/help-button.png)](https://peter88213.github.io/nv_yw7/help/)
 
 
 # ![Y](icons/yLogo32.png) nv_yw7
@@ -51,7 +51,7 @@ The package is also available in zip format: [nv_yw7_v0.99.0.zip](https://github
 
 ## Usage
 
-See the [online manual](docs/nv_yw7/)
+See the [online manual](https://peter88213.github.io/nv_yw7/help/)
 
 ---
 
