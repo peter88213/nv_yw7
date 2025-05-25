@@ -133,7 +133,8 @@ class Yw7File(File):
         'Field_CustomAR',
         ]
     # Names of xml elements containing CDATA.
-    # ElementTree.write omits CDATA tags, so they have to be inserted afterwards.
+    # ElementTree.write omits CDATA tags,
+    # so they have to be inserted afterwards.
 
     STAGE_MARKER = 'stage'
 
@@ -170,7 +171,8 @@ class Yw7File(File):
         Overrides the superclass method.
         """
         if self.is_locked():
-            raise Error(f'{_("yWriter seems to be open. Please close first")}.')
+            msg = _("yWriter seems to be open. Please close first")
+            raise Error(f'{msg}.')
 
         self._noteCounter = 0
         self._noteNumber = 0
@@ -179,7 +181,8 @@ class Yw7File(File):
                 with open(self.filePath, 'r', encoding='utf-8') as f:
                     xmlText = f.read()
             except:
-                # yw7 file may be UTF-16 encoded, with a wrong XML header (yWriter for iOS)
+                # yw7 file may be UTF-16 encoded,
+                # with a wrong XML header (yWriter for iOS)
                 with open(self.filePath, 'r', encoding='utf-16') as f:
                     xmlText = f.read()
         except:
@@ -195,7 +198,7 @@ class Yw7File(File):
 
         self._ywApIds = []
         self.wcLog = {}
-        self._read_project(root)
+        self._read_project_data(root)
         self._read_locations(root)
         self._read_items(root)
         self._read_characters(root)
@@ -232,8 +235,8 @@ class Yw7File(File):
     def write(self):
         """Write instance variables to the yWriter xml file.
         
-        Open the yWriter xml file located at filePath and replace the instance variables 
-        not being None. Create new XML elements if necessary.
+        Open the yWriter xml file located at filePath and replace the 
+        instance variables not being None. Create new XML elements if necessary.
         Raise the "Error" exception in case of error. 
         Overrides the superclass method.
         """
@@ -307,7 +310,8 @@ class Yw7File(File):
             if yUnused:
                 ET.SubElement(xmlScene, 'Unused').text = '-1'
             if ySceneType is not None:
-                ET.SubElement(xmlSceneFields[scId], 'Field_SceneType').text = ySceneType
+                ET.SubElement(
+                    xmlSceneFields[scId], 'Field_SceneType').text = ySceneType
             if plotPoint:
                 ET.SubElement(xmlScene, 'Status').text = '1'
             elif prjScn.status is not None:
@@ -318,7 +322,8 @@ class Yw7File(File):
                 return
 
             self._novxParser.feed(f'<Content>{prjScn.sectionContent}</Content>')
-            ET.SubElement(xmlScene, 'SceneContent').text = ''.join(self._novxParser.textList)
+            ET.SubElement(
+                xmlScene, 'SceneContent').text = ''.join(self._novxParser.textList)
             if prjScn.notes:
                 ET.SubElement(xmlScene, 'Notes').text = prjScn.notes
             if scTags:
@@ -417,7 +422,9 @@ class Yw7File(File):
             if plId is None:
                 fields = { 'Field_NoNumber': isTrue(prjChp.noNumber)}
             else:
-                fields = {'Field_ArcDefinition': self.novel.plotLines[plId].shortName}
+                fields = {
+                    'Field_ArcDefinition': self.novel.plotLines[plId].shortName
+                }
             for field in fields:
                 if fields[field]:
                     ET.SubElement(xmlChapterFields, field).text = fields[field]
@@ -498,15 +505,20 @@ class Yw7File(File):
         def build_project_subtree(xmlProject):
             ET.SubElement(xmlProject, 'Ver').text = '7'
             if self.novel.title:
-                ET.SubElement(xmlProject, 'Title').text = self.novel.title
+                ET.SubElement(
+                    xmlProject, 'Title').text = self.novel.title
             if self.novel.desc:
-                ET.SubElement(xmlProject, 'Desc').text = self.novel.desc
+                ET.SubElement(
+                    xmlProject, 'Desc').text = self.novel.desc
             if self.novel.authorName:
-                ET.SubElement(xmlProject, 'AuthorName').text = self.novel.authorName
+                ET.SubElement(
+                    xmlProject, 'AuthorName').text = self.novel.authorName
             if self.novel.wordCountStart is not None:
-                ET.SubElement(xmlProject, 'WordCountStart').text = str(self.novel.wordCountStart)
+                ET.SubElement(
+                    xmlProject, 'WordCountStart').text = str(self.novel.wordCountStart)
             if self.novel.wordTarget is not None:
-                ET.SubElement(xmlProject, 'WordTarget').text = str(self.novel.wordTarget)
+                ET.SubElement(
+                    xmlProject, 'WordTarget').text = str(self.novel.wordTarget)
 
             # Write project custom fields.
             workPhase = self.novel.workPhase
@@ -617,7 +629,8 @@ class Yw7File(File):
             xmlScene = ET.SubElement(xmlScenes, 'SCENE')
             ET.SubElement(xmlScene, 'ID').text = scId[2:]
             xmlSceneFields[scId] = ET.SubElement(xmlScene, 'Fields')
-            build_scene_subtree(xmlScene, self.novel.plotPoints[ppId], plotPoint=True)
+            build_scene_subtree(
+                xmlScene, self.novel.plotPoints[ppId], plotPoint=True)
 
         #--- Process chapters.
         chIds = list(self.novel.tree.get_children(CH_ROOT))
@@ -643,12 +656,14 @@ class Yw7File(File):
             chIds.append(chId)
             xmlChapter = ET.SubElement(xmlChapters, 'CHAPTER')
             ET.SubElement(xmlChapter, 'ID').text = chId[2:]
-            build_chapter_subtree(xmlChapter, self.novel.plotLines[plId], plId=plId)
+            build_chapter_subtree(
+                xmlChapter, self.novel.plotLines[plId], plId=plId)
             srtScenes = self.novel.tree.get_children(plId)
             if srtScenes:
                 xmlScnList = ET.SubElement(xmlChapter, 'Scenes')
                 for ppId in srtScenes:
-                    ET.SubElement(xmlScnList, 'ScID').text = newScIds[ppId][2:]
+                    ET.SubElement(
+                        xmlScnList, 'ScID').text = newScIds[ppId][2:]
 
         #--- Process project notes.
         if self.novel.tree.get_children(PN_ROOT):
@@ -656,7 +671,8 @@ class Yw7File(File):
             for pnId in self.novel.tree.get_children(PN_ROOT):
                 xmlProjectnote = ET.SubElement(xmlProjectnotes, 'PROJECTNOTE')
                 ET.SubElement(xmlProjectnote, 'ID').text = pnId[2:]
-                build_prjNote_subtree(xmlProjectnote, self.novel.projectNotes[pnId])
+                build_prjNote_subtree(
+                    xmlProjectnote, self.novel.projectNotes[pnId])
 
         #--- Add plot line/scene references.
         scPlotLines = {}
@@ -820,11 +836,13 @@ class Yw7File(File):
             filePath: str -- path to xml file.
         
         Read the xml file, put a header on top, insert the missing CDATA tags,
-        and replace xml entities by plain text (unescape). Overwrite the .yw7 xml file.
+        and replace xml entities by plain text (unescape). 
+        Overwrite the .yw7 xml file.
         Raise the "Error" exception in case of error. 
         
         Note: The path is given as an argument rather than using self.filePath. 
-        So this routine can be used for yWriter-generated xml files other than .yw7 as well. 
+        So this routine can be used for yWriter-generated xml files 
+        other than .yw7 as well. 
         """
         with open(filePath, 'r', encoding='utf-8') as f:
             text = f.read()
@@ -993,7 +1011,8 @@ class Yw7File(File):
                 for scId in scenes:
                     self.novel.tree.append(plId, f'{PLOT_POINT_PREFIX}{scId}')
                     self._ywApIds.append(scId)
-                    # this is necessary for turning yWriter scenes into novelibre turning points
+                    # this is necessary for turning yWriter scenes
+                    # into novelibre plot points
             else:
                 chId = f"{CHAPTER_PREFIX}{xmlChapter.find('ID').text}"
                 self.novel.chapters[chId] = prjChapter
@@ -1056,7 +1075,7 @@ class Yw7File(File):
             self.novel.characters[crId].birthDate = kwVarYw7.get('Field_BirthDate', '')
             self.novel.characters[crId].deathDate = kwVarYw7.get('Field_DeathDate', '')
 
-    def _read_project(self, root):
+    def _read_project_data(self, root):
         """Read attributes at project level from the xml element tree."""
         xmlProject = root.find('PROJECT')
 
@@ -1341,9 +1360,9 @@ class Yw7File(File):
             if ywScId in self._ywApIds:
                 # it's a plot point
                 ppId = f"{PLOT_POINT_PREFIX}{ywScId}"
-                self.novel.plotPoints[ppId] = self._nvSvc.new_plot_point(title=prjScn.title,
-                                                      desc=prjScn.desc
-                                                      )
+                self.novel.plotPoints[ppId] = self._nvSvc.new_plot_point(
+                    title=prjScn.title,
+                    desc=prjScn.desc)
                 if ywScnAssocs:
                     self.novel.plotPoints[ppId].sectionAssoc = f'{SECTION_PREFIX}{ywScnAssocs[0]}'
             else:
