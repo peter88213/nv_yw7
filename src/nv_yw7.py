@@ -46,6 +46,15 @@ class Plugin(PluginBase):
         # Add an entry to the Help menu.
         self._ui.helpMenu.add_command(label=_('yw7 plugin Online help'), command=self.open_help)
 
+    def lock(self):
+        self._ui.exportMenu.entryconfig(_('yw7 project'), state='disabled')
+
+    def open_help(self):
+        webbrowser.open(self.HELP_URL)
+
+    def unlock(self):
+        self._ui.exportMenu.entryconfig(_('yw7 project'), state='normal')
+
     def _export_yw7(self):
         """Export the current project to yw7.
         
@@ -130,7 +139,4 @@ class Plugin(PluginBase):
         self._ctrl.open_project(filePath=novxFile.filePath)
         self._ui.set_status(f'{_("File imported")}: {yw7Path}')
         return True
-
-    def open_help(self):
-        webbrowser.open(self.HELP_URL)
 
