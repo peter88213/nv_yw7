@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.3.0
+
+- Disabling the yw7 export when the project is locked.
+
+API: 5.18
+Based on novelibre 5.25.1
+
+
 ### Version 5.2.0
 
 - Providing online help via the "Help" menu.
