@@ -5,6 +5,16 @@
 ## Changelog
 
 
+### Version 5.4.0
+
+Update for novelibre 5.27.
+
+- Processing Section.viewpoint.
+
+API: 5.27
+Based on novelibre 5.27.1
+
+
 ### Version 5.3.0
 
 - Disabling the yw7 export when the project is locked.

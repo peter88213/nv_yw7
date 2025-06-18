@@ -293,7 +293,7 @@ class Yw7File(File):
                 (True, '1'),
                 (True, '2'),
                 (True, '0'),
-                )
+            )
             if plotPoint:
                 scType = 2
             elif prjScn.scType in (0, None):
@@ -365,8 +365,16 @@ class Yw7File(File):
 
             #--- Characters/locations/items
             if prjScn.characters:
+                scCharacters = prjScn.characters[:]
+            else:
+                scCharacters = []
+            if prjScn.viewpoint:
+                if prjScn.viewpoint in scCharacters:
+                    scCharacters.remove(prjScn.viewpoint)
+                scCharacters.insert(0, prjScn.viewpoint)
+            if scCharacters:
                 xmlCharacters = ET.SubElement(xmlScene, 'Characters')
-                for crId in prjScn.characters:
+                for crId in scCharacters:
                     ET.SubElement(xmlCharacters, 'CharID').text = crId[2:]
             if prjScn.locations:
                 xmlLocations = ET.SubElement(xmlScene, 'Locations')
@@ -1337,6 +1345,8 @@ class Yw7File(File):
                     if crId in self.novel.tree.get_children(CR_ROOT):
                         scCharacters.append(crId)
             prjScn.characters = scCharacters
+            if scCharacters:
+                prjScn.viewpoint = scCharacters[0]
 
             #--- Locations associated with the scene.
             scLocations = []

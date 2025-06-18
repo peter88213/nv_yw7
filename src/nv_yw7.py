@@ -18,7 +18,7 @@ from nvyw7lib.yw7_file import Yw7File
 class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '5.18'
+    API_VERSION = '5.27'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
     HELP_URL = _('https://peter88213.github.io/nv_yw7/help/')
