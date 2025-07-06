@@ -37,14 +37,24 @@ class Plugin(PluginBase):
         self._prefs = controller.get_preferences()
 
         # Add an entry to the "File > New" menu.
-        self._ui.newMenu.add_command(label=_('Create from yw7...'), command=self._import_yw7)
+        self._ui.newMenu.add_command(
+            label=_('Create from yw7...'),
+            command=self._import_yw7,
+        )
 
         # Add an entry to the "Export" menu.
-        self._ui.exportMenu.insert_command(_('Options'), label=_('yw7 project'), command=self._export_yw7)
+        self._ui.exportMenu.insert_command(
+            _('Options'),
+            label=_('yw7 project'),
+            command=self._export_yw7,
+        )
         self._ui.exportMenu.insert_separator(_('Options'))
 
         # Add an entry to the Help menu.
-        self._ui.helpMenu.add_command(label=_('yw7 plugin Online help'), command=self.open_help)
+        self._ui.helpMenu.add_command(
+            label=_('yw7 plugin Online help'),
+            command=self.open_help,
+        )
 
     def lock(self):
         self._ui.exportMenu.entryconfig(_('yw7 project'), state='disabled')
@@ -111,7 +121,10 @@ class Plugin(PluginBase):
         try:
             filePath, extension = os.path.splitext(yw7Path)
             if extension == Yw7File.EXTENSION:
-                novxPath = f'{filePath}{self._mdl.nvService.get_novx_file_extension()}'
+                novxPath = (
+                    f'{filePath}'
+                    f'{self._mdl.nvService.get_novx_file_extension()}'
+                )
                 if os.path.isfile(novxPath):
                     if not self._ui.ask_yes_no(
                         message=_('Overwrite existing novelibre file?'),
@@ -124,7 +137,10 @@ class Plugin(PluginBase):
                 yw7File = Yw7File(yw7Path, nv_service=self._mdl.nvService)
                 yw7File.novel = self._mdl.nvService.new_novel()
                 yw7File.read()
-                novxFile = self._mdl.nvService.new_novx_file(novxPath, nv_service=self._mdl.nvService)
+                novxFile = self._mdl.nvService.new_novx_file(
+                    novxPath,
+                    nv_service=self._mdl.nvService
+                )
                 novxFile.novel = yw7File.novel
                 novxFile.wcLog = yw7File.wcLog
                 novxFile.write()
