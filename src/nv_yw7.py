@@ -156,7 +156,7 @@ class Plugin(PluginBase):
                 self._ui.set_status(f'!{_("File type is not supported")}.')
                 return False
 
-        except ZeroDivisionError as ex:
+        except Exception as ex:
             self._ui.set_status(f'!{str(ex)}')
             return False
 
