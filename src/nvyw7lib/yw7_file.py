@@ -63,14 +63,14 @@ class Yw7File(File):
         'Field_SaveWordCount',
         'Field_LanguageCode',
         'Field_CountryCode',
-        ]
+    ]
     # list of the names of the project keyword variables
 
     CHP_KWVAR_YW7 = [
         'Field_NoNumber',
         'Field_ArcDefinition',
         'Field_Arc_Definition',
-        ]
+    ]
     # list of the names of the chapter keyword variables
 
     SCN_KWVAR_YW7 = [
@@ -78,24 +78,24 @@ class Yw7File(File):
         'Field_SceneAssoc',
         'Field_CustomAR',
         'Field_SceneMode',
-        ]
+    ]
     # list of the names of the scene keyword variables
 
     CRT_KWVAR_YW7 = [
         'Field_Link',
         'Field_BirthDate',
         'Field_DeathDate',
-        ]
+    ]
     # list of the names of the character keyword variables
 
     LOC_KWVAR_YW7 = [
         'Field_Link',
-        ]
+    ]
     # list of the names of the location keyword variables
 
     ITM_KWVAR_YW7 = [
         'Field_Link',
-        ]
+    ]
     # list of the names of the item keyword variables
 
     _CDATA_TAGS = [
@@ -131,7 +131,7 @@ class Yw7File(File):
         'Field_ArcDefinition',
         'Field_SceneArcs',
         'Field_CustomAR',
-        ]
+    ]
     # Names of xml elements containing CDATA.
     # ElementTree.write omits CDATA tags,
     # so they have to be inserted afterwards.
@@ -253,7 +253,8 @@ class Yw7File(File):
         self._postprocess_xml_file(self.filePath)
 
     def _build_element_tree(self):
-        """Modify the yWriter project attributes of an existing xml element tree."""
+        # Modify the yWriter project attributes
+        # of an existing xml element tree.
 
         def isTrue(value):
             if value:
@@ -321,47 +322,81 @@ class Yw7File(File):
                 ET.SubElement(xmlScene, 'SceneContent')
                 return
 
-            self._novxParser.feed(f'<Content>{prjScn.sectionContent}</Content>')
+            self._novxParser.feed(
+                f'<Content>{prjScn.sectionContent}</Content>'
+            )
             ET.SubElement(
-                xmlScene, 'SceneContent').text = ''.join(self._novxParser.textList)
+                xmlScene, 'SceneContent').text = (
+                    ''.join(self._novxParser.textList)
+                )
             if prjScn.notes:
-                ET.SubElement(xmlScene, 'Notes').text = prjScn.notes
+                ET.SubElement(
+                    xmlScene, 'Notes'
+                ).text = prjScn.notes
             if scTags:
-                ET.SubElement(xmlScene, 'Tags').text = list_to_string(scTags)
+                ET.SubElement(
+                    xmlScene, 'Tags'
+                ).text = list_to_string(scTags)
             if prjScn.appendToPrev:
-                ET.SubElement(xmlScene, 'AppendToPrev').text = '-1'
+                ET.SubElement(
+                    xmlScene, 'AppendToPrev'
+                ).text = '-1'
 
             #--- Write scene start.
             if (prjScn.date) and (prjScn.time):
                 separator = ' '
                 dateTime = f'{prjScn.date}{separator}{prjScn.time}'
-                ET.SubElement(xmlScene, 'SpecificDateTime').text = dateTime
-                ET.SubElement(xmlScene, 'SpecificDateMode').text = '-1'
+                ET.SubElement(
+                    xmlScene, 'SpecificDateTime'
+                ).text = dateTime
+                ET.SubElement(
+                    xmlScene, 'SpecificDateMode'
+                ).text = '-1'
             elif (prjScn.day) or (prjScn.time):
                 if prjScn.day:
-                    ET.SubElement(xmlScene, 'Day').text = prjScn.day
+                    ET.SubElement(
+                        xmlScene, 'Day'
+                    ).text = prjScn.day
                 if prjScn.time:
                     hours, minutes, __ = prjScn.time.split(':')
-                    ET.SubElement(xmlScene, 'Hour').text = hours
-                    ET.SubElement(xmlScene, 'Minute').text = minutes
+                    ET.SubElement(
+                        xmlScene, 'Hour'
+                    ).text = hours
+                    ET.SubElement(
+                        xmlScene, 'Minute'
+                    ).text = minutes
 
             #--- Write scene duration.
             if prjScn.lastsDays:
-                ET.SubElement(xmlScene, 'LastsDays').text = prjScn.lastsDays
+                ET.SubElement(
+                    xmlScene, 'LastsDays'
+                ).text = prjScn.lastsDays
             if prjScn.lastsHours:
-                ET.SubElement(xmlScene, 'LastsHours').text = prjScn.lastsHours
+                ET.SubElement(
+                    xmlScene, 'LastsHours'
+                ).text = prjScn.lastsHours
             if prjScn.lastsMinutes:
-                ET.SubElement(xmlScene, 'LastsMinutes').text = prjScn.lastsMinutes
+                ET.SubElement(
+                    xmlScene, 'LastsMinutes'
+                ).text = prjScn.lastsMinutes
 
             # Plot related information
             if prjScn.scene == 2:
-                ET.SubElement(xmlScene, 'ReactionScene').text = '-1'
+                ET.SubElement(
+                    xmlScene, 'ReactionScene'
+                ).text = '-1'
             if prjScn.goal:
-                ET.SubElement(xmlScene, 'Goal').text = prjScn.goal
+                ET.SubElement(
+                    xmlScene, 'Goal'
+                ).text = prjScn.goal
             if prjScn.conflict:
-                ET.SubElement(xmlScene, 'Conflict').text = prjScn.conflict
+                ET.SubElement(
+                    xmlScene, 'Conflict'
+                ).text = prjScn.conflict
             if prjScn.outcome:
-                ET.SubElement(xmlScene, 'Outcome').text = prjScn.outcome
+                ET.SubElement(
+                    xmlScene, 'Outcome'
+                ).text = prjScn.outcome
 
             #--- Characters/locations/items
             if prjScn.characters:
@@ -514,19 +549,24 @@ class Yw7File(File):
             ET.SubElement(xmlProject, 'Ver').text = '7'
             if self.novel.title:
                 ET.SubElement(
-                    xmlProject, 'Title').text = self.novel.title
+                    xmlProject, 'Title'
+                ).text = self.novel.title
             if self.novel.desc:
                 ET.SubElement(
-                    xmlProject, 'Desc').text = self.novel.desc
+                    xmlProject, 'Desc'
+                ).text = self.novel.desc
             if self.novel.authorName:
                 ET.SubElement(
-                    xmlProject, 'AuthorName').text = self.novel.authorName
+                    xmlProject, 'AuthorName'
+                ).text = self.novel.authorName
             if self.novel.wordCountStart is not None:
                 ET.SubElement(
-                    xmlProject, 'WordCountStart').text = str(self.novel.wordCountStart)
+                    xmlProject, 'WordCountStart'
+                ).text = str(self.novel.wordCountStart)
             if self.novel.wordTarget is not None:
                 ET.SubElement(
-                    xmlProject, 'WordTarget').text = str(self.novel.wordTarget)
+                    xmlProject, 'WordTarget'
+                ).text = str(self.novel.wordTarget)
 
             # Write project custom fields.
             workPhase = self.novel.workPhase
@@ -534,11 +574,21 @@ class Yw7File(File):
                 workPhase = str(workPhase)
             fields = {
                 'Field_WorkPhase': workPhase,
-                'Field_RenumberChapters': isTrue(self.novel.renumberChapters),
-                'Field_RenumberParts': isTrue(self.novel.renumberParts),
-                'Field_RenumberWithinParts': isTrue(self.novel.renumberWithinParts),
-                'Field_RomanChapterNumbers': isTrue(self.novel.romanChapterNumbers),
-                'Field_RomanPartNumbers': isTrue(self.novel.romanPartNumbers),
+                'Field_RenumberChapters': isTrue(
+                    self.novel.renumberChapters
+                ),
+                'Field_RenumberParts': isTrue(
+                    self.novel.renumberParts
+                ),
+                'Field_RenumberWithinParts': isTrue(
+                    self.novel.renumberWithinParts
+                ),
+                'Field_RomanChapterNumbers': isTrue(
+                    self.novel.romanChapterNumbers
+                ),
+                'Field_RomanPartNumbers': isTrue(
+                    self.novel.romanPartNumbers
+                ),
                 'Field_ChapterHeadingPrefix': self.novel.chapterHeadingPrefix,
                 'Field_ChapterHeadingSuffix': self.novel.chapterHeadingSuffix,
                 'Field_PartHeadingPrefix': self.novel.partHeadingPrefix,
@@ -548,7 +598,9 @@ class Yw7File(File):
                 'Field_CustomOutcome': self.novel.customOutcome,
                 'Field_CustomChrBio': self.novel.customChrBio,
                 'Field_CustomChrGoals': self.novel.customChrGoals,
-                'Field_SaveWordCount': isTrue(self.novel.saveWordCount),
+                'Field_SaveWordCount': isTrue(
+                    self.novel.saveWordCount
+                ),
                 'Field_ReferenceDate': self.novel.referenceDate,
                 }
             xmlProjectFields = ET.SubElement(xmlProject, 'Fields')
@@ -595,7 +647,11 @@ class Yw7File(File):
             build_character_subtree(xmlCrt, self.novel.characters[crId])
 
         #--- Process project variables.
-        if self.novel.languages or self.novel.languageCode or self.novel.countryCode:
+        if (
+            self.novel.languages
+            or self.novel.languageCode
+            or self.novel.countryCode
+        ):
             self.novel.check_locale()
             prjVars = []
 
@@ -690,13 +746,21 @@ class Yw7File(File):
             sectionAssoc[scId] = []
         for plId in self.novel.plotLines:
             for scId in self.novel.plotLines[plId].sections:
-                scPlotLines[scId].append(self.novel.plotLines[plId].shortName)
+                scPlotLines[scId].append(
+                    self.novel.plotLines[plId].shortName
+                )
             for ppId in self.novel.tree.get_children(plId):
-                scPlotLines[newScIds[ppId]].append(self.novel.plotLines[plId].shortName)
+                scPlotLines[newScIds[ppId]].append(
+                    self.novel.plotLines[plId].shortName
+                )
         for ppId in self.novel.plotPoints:
             if self.novel.plotPoints[ppId].sectionAssoc:
-                sectionAssoc[self.novel.plotPoints[ppId].sectionAssoc].append(newScIds[ppId][2:])
-                sectionAssoc[newScIds[ppId]].append(self.novel.plotPoints[ppId].sectionAssoc[2:])
+                sectionAssoc[self.novel.plotPoints[ppId].sectionAssoc].append(
+                    newScIds[ppId][2:]
+                )
+                sectionAssoc[newScIds[ppId]].append(
+                    self.novel.plotPoints[ppId].sectionAssoc[2:]
+                )
         for scId in scIds:
             fields = {
                 'Field_SceneArcs': list_to_string(scPlotLines[scId]),
@@ -704,7 +768,10 @@ class Yw7File(File):
                 }
             for field in fields:
                 if fields[field]:
-                    ET.SubElement(xmlSceneFields[scId], field).text = fields[field]
+                    ET.SubElement(
+                        xmlSceneFields[scId],
+                        field
+                    ).text = fields[field]
 
         #--- Build the word count log.
         if self.wcLog:
@@ -714,7 +781,10 @@ class Yw7File(File):
             for wc in self.wcLog:
                 if self.novel.saveWordCount:
                     # Discard entries with unchanged word count.
-                    if self.wcLog[wc][0] == wcLastCount and self.wcLog[wc][1] == wcLastTotalCount:
+                    if (
+                        self.wcLog[wc][0] == wcLastCount
+                        and self.wcLog[wc][1] == wcLastTotalCount
+                    ):
                         continue
 
                     wcLastCount = self.wcLog[wc][0]
@@ -769,18 +839,23 @@ class Yw7File(File):
                     noteLabel = '*'
             elif noteType.startswith('en'):
                 noteClass = 'endnote'
-            return (f'<note id="ftn{self._noteCounter}" '
-                    f'class="{noteClass}"><note-citation>{noteLabel}</note-citation>'
-                    f'<p>{match.group(2)}</p></note>')
+            return (
+                f'<note id="ftn{self._noteCounter}" '
+                f'class="{noteClass}"><note-citation>{noteLabel}'
+                '</note-citation>'
+                f'<p>{match.group(2)}</p></note>'
+            )
 
         def replace_comment(match):
             if self.novel.authorName:
                 creator = self.novel.authorName
             else:
                 creator = _('unknown')
-            return (f'<comment><creator>{creator}</creator>'
-                    f'<date>{datetime.today().replace(microsecond=0).isoformat()}</date>'
-                    f'<p>{match.group(1)}</p></comment>')
+            return (
+                f'<comment><creator>{creator}</creator><date>'
+                f'{datetime.today().replace(microsecond=0).isoformat()}'
+                f'</date><p>{match.group(1)}</p></comment>'
+            )
 
         if not text:
             return ''
@@ -804,14 +879,18 @@ class Yw7File(File):
             ('[/i]', '</em>'),
             ('[b]', '<strong>'),
             ('[/b]', '</strong>'),
-            ]
+        ]
         tags = ['i', 'b']
         if self.novel.languages is None:
             self.novel.get_languages()
         for language in self.novel.languages:
             tags.append(f'lang={language}')
-            xmlReplacements.append((f'[lang={language}]', f'<span xml:lang="{language}">'))
-            xmlReplacements.append((f'[/lang={language}]', '</span>'))
+            xmlReplacements.append(
+                (f'[lang={language}]', f'<span xml:lang="{language}">')
+            )
+            xmlReplacements.append(
+                (f'[/lang={language}]', '</span>')
+            )
 
         #--- Process markup reaching across linebreaks.
         text = fix_multiline_formatting(text, tags)
@@ -830,11 +909,22 @@ class Yw7File(File):
 
         #--- Convert comments, footnotes, and endnotes.
         if text.find('/*') > 0:
-            text = re.sub(r'\/\* *@([ef]n\**) (.*?)\*\/', replace_note, text)
-            text = re.sub(r'\/\*(.*?)\*\/', replace_comment, text)
-
+            text = re.sub(
+                r'\/\* *@([ef]n\**) (.*?)\*\/',
+                replace_note,
+                text
+            )
+            text = re.sub(
+                r'\/\*(.*?)\*\/',
+                replace_comment,
+                text
+            )
         text = f'<p>{text}</p>'
-        text = re.sub(r'\<p\>\&gt\; (.*?)\<\/p\>', '<p style="quotations">\\1</p>', text)
+        text = re.sub(
+            r'\<p\>\&gt\; (.*?)\<\/p\>',
+            '<p style="quotations">\\1</p>',
+            text
+        )
         return text
 
     def _postprocess_xml_file(self, filePath):
@@ -866,7 +956,8 @@ class Yw7File(File):
         text = text.replace('\n]]', ']]')
         if not self.novel.chapters:
             text = text.replace('<CHAPTERS />', '<CHAPTERS></CHAPTERS>')
-            # otherwise, yWriter fails to parse the file if there are no chapters.
+            # otherwise, yWriter fails to parse the file
+            # if there are no chapters.
         text = unescape(text)
         try:
             with open(filePath, 'w', encoding='utf-8') as f:
@@ -884,11 +975,14 @@ class Yw7File(File):
             self.novel.locations[lcId] = self._nvSvc.new_world_element()
 
             if xmlLocation.find('Title') is not None:
-                self.novel.locations[lcId].title = xmlLocation.find('Title').text
-
+                self.novel.locations[lcId].title = (
+                    xmlLocation.find('Title').text
+                )
             # if xmlLocation.find('ImageFile') is not None:
-            #    self.novel.locations[lcId].image = xmlLocation.find('ImageFile').text
-
+            #    self.novel.locations[lcId].image = (
+            #        xmlLocation.find('ImageFile').text
+            #    )
+            # TODO: Convert image into link
             if xmlLocation.find('Desc') is not None:
                 self.novel.locations[lcId].desc = xmlLocation.find('Desc').text
 
@@ -911,10 +1005,11 @@ class Yw7File(File):
 
             if xmlItem.find('Title') is not None:
                 self.novel.items[itId].title = xmlItem.find('Title').text
-
             # if xmlItem.find('ImageFile') is not None:
-            #    self.novel.items[itId].image = xmlItem.find('ImageFile').text
-
+            #    self.novel.items[itId].image = (
+            #        xmlItem.find('ImageFile').text
+            #    )
+            # TODO: Convert image into link
             if xmlItem.find('Desc') is not None:
                 self.novel.items[itId].desc = xmlItem.find('Desc').text
 
@@ -973,7 +1068,8 @@ class Yw7File(File):
                 elif yUnused:
                     prjChapter.chType = 1
             else:
-                # The file may be created with a yWriter version prior to 7.0.7.2
+                # The file may be created with a yWriter version
+                # prior to 7.0.7.2
                 if xmlChapter.find('Type') is not None:
                     yType = xmlChapter.find('Type').text
                     if yType == '1':
@@ -1026,7 +1122,9 @@ class Yw7File(File):
                 self.novel.chapters[chId] = prjChapter
                 self.novel.tree.append(CH_ROOT, chId)
                 for scId in scenes:
-                    self.novel.tree.append(chId, f'{SECTION_PREFIX}{scId}')
+                    self.novel.tree.append(
+                        chId, f'{SECTION_PREFIX}{scId}'
+                    )
 
     def _read_characters(self, root):
         """Read characters from the xml element tree."""
@@ -1038,41 +1136,50 @@ class Yw7File(File):
             self.novel.characters[crId] = self._nvSvc.new_character()
 
             if xmlCharacter.find('Title') is not None:
-                self.novel.characters[crId].title = xmlCharacter.find('Title').text
-
+                self.novel.characters[crId].title = (
+                    xmlCharacter.find('Title').text
+                )
             # if xmlCharacter.find('ImageFile') is not None:
-            #    self.novel.characters[crId].image = xmlCharacter.find('ImageFile').text
-            # TODO: read link
-
+            #    self.novel.characters[crId].image = (
+            #        xmlCharacter.find('ImageFile').text
+            #    )
+            # TODO: convert image into link
             if xmlCharacter.find('Desc') is not None:
-                self.novel.characters[crId].desc = xmlCharacter.find('Desc').text
-
+                self.novel.characters[crId].desc = (
+                    xmlCharacter.find('Desc').text
+                )
             if xmlCharacter.find('AKA') is not None:
-                self.novel.characters[crId].aka = xmlCharacter.find('AKA').text
-
+                self.novel.characters[crId].aka = (
+                    xmlCharacter.find('AKA').text
+                )
             if xmlCharacter.find('Tags') is not None:
                 if xmlCharacter.find('Tags').text is not None:
                     tags = string_to_list(xmlCharacter.find('Tags').text)
-                    self.novel.characters[crId].tags = self._strip_spaces(tags)
-
+                    self.novel.characters[crId].tags = (
+                        self._strip_spaces(tags)
+                    )
             if xmlCharacter.find('Notes') is not None:
-                self.novel.characters[crId].notes = xmlCharacter.find('Notes').text
-
+                self.novel.characters[crId].notes = (
+                    xmlCharacter.find('Notes').text
+                )
             if xmlCharacter.find('Bio') is not None:
-                self.novel.characters[crId].bio = xmlCharacter.find('Bio').text
-
+                self.novel.characters[crId].bio = (
+                    xmlCharacter.find('Bio').text
+                )
             if xmlCharacter.find('Goals') is not None:
-                self.novel.characters[crId].goals = xmlCharacter.find('Goals').text
-
+                self.novel.characters[crId].goals = (
+                    xmlCharacter.find('Goals').text
+                )
             if xmlCharacter.find('FullName') is not None:
-                self.novel.characters[crId].fullName = xmlCharacter.find('FullName').text
-
+                self.novel.characters[crId].fullName = (
+                    xmlCharacter.find('FullName').text
+                )
             if xmlCharacter.find('Major') is not None:
                 self.novel.characters[crId].isMajor = True
             else:
                 self.novel.characters[crId].isMajor = False
-                #--- Read scene custom fields.
 
+            #--- Read scene custom fields.
             kwVarYw7 = {}
             xmlCharacterFields = xmlCharacter.find('Fields')
             if xmlCharacterFields is not None:
@@ -1080,8 +1187,12 @@ class Yw7File(File):
                     xmlField = xmlCharacterFields.find(fieldName)
                     if xmlField  is not None:
                         kwVarYw7[fieldName] = xmlField.text
-            self.novel.characters[crId].birthDate = kwVarYw7.get('Field_BirthDate', '')
-            self.novel.characters[crId].deathDate = kwVarYw7.get('Field_DeathDate', '')
+            self.novel.characters[crId].birthDate = kwVarYw7.get(
+                'Field_BirthDate', ''
+            )
+            self.novel.characters[crId].deathDate = kwVarYw7.get(
+                'Field_DeathDate', ''
+            )
 
     def _read_project_data(self, root):
         """Read attributes at project level from the xml element tree."""
@@ -1099,12 +1210,16 @@ class Yw7File(File):
         #--- Read word target data.
         if xmlProject.find('WordCountStart') is not None:
             try:
-                self.novel.wordCountStart = int(xmlProject.find('WordCountStart').text)
+                self.novel.wordCountStart = int(
+                    xmlProject.find('WordCountStart').text
+                )
             except:
                 pass
         if xmlProject.find('WordTarget') is not None:
             try:
-                self.novel.wordTarget = int(xmlProject.find('WordTarget').text)
+                self.novel.wordTarget = int(
+                    xmlProject.find('WordTarget').text
+                )
             except:
                 pass
 
@@ -1120,21 +1235,50 @@ class Yw7File(File):
             self.novel.workPhase = int(kwVarYw7.get('Field_WorkPhase', None))
         except:
             self.novel.workPhase = None
-        self.novel.renumberChapters = kwVarYw7.get('Field_RenumberChapters', False) == '1'
-        self.novel.renumberParts = kwVarYw7.get('Field_RenumberParts', False) == '1'
-        self.novel.renumberWithinParts = kwVarYw7.get('Field_RenumberWithinParts', False) == '1'
-        self.novel.romanChapterNumbers = kwVarYw7.get('Field_RomanChapterNumbers', False) == '1'
-        self.novel.romanPartNumbers = kwVarYw7.get('Field_RomanPartNumbers', False) == '1'
-        self.novel.chapterHeadingPrefix = kwVarYw7.get('Field_ChapterHeadingPrefix', '')
-        self.novel.chapterHeadingSuffix = kwVarYw7.get('Field_ChapterHeadingSuffix', '')
-        self.novel.partHeadingPrefix = kwVarYw7.get('Field_PartHeadingPrefix', '')
-        self.novel.partHeadingSuffix = kwVarYw7.get('Field_PartHeadingSuffix', '')
-        self.novel.customGoal = kwVarYw7.get('Field_CustomGoal', '')
-        self.novel.customConflict = kwVarYw7.get('Field_CustomConflict', '')
-        self.novel.customOutcome = kwVarYw7.get('Field_CustomOutcome', '')
-        self.novel.customChrBio = kwVarYw7.get('Field_CustomChrBio', '')
-        self.novel.customChrGoals = kwVarYw7.get('Field_CustomChrGoals', '')
-        self.novel.saveWordCount = kwVarYw7.get('Field_SaveWordCount', False) == '1'
+        self.novel.renumberChapters = kwVarYw7.get(
+            'Field_RenumberChapters', False
+        ) == '1'
+        self.novel.renumberParts = kwVarYw7.get(
+            'Field_RenumberParts', False
+        ) == '1'
+        self.novel.renumberWithinParts = kwVarYw7.get(
+            'Field_RenumberWithinParts', False
+        ) == '1'
+        self.novel.romanChapterNumbers = kwVarYw7.get(
+            'Field_RomanChapterNumbers', False
+        ) == '1'
+        self.novel.romanPartNumbers = kwVarYw7.get(
+            'Field_RomanPartNumbers', False
+        ) == '1'
+        self.novel.chapterHeadingPrefix = kwVarYw7.get(
+            'Field_ChapterHeadingPrefix', ''
+        )
+        self.novel.chapterHeadingSuffix = kwVarYw7.get(
+            'Field_ChapterHeadingSuffix', ''
+        )
+        self.novel.partHeadingPrefix = kwVarYw7.get(
+            'Field_PartHeadingPrefix', ''
+        )
+        self.novel.partHeadingSuffix = kwVarYw7.get(
+            'Field_PartHeadingSuffix', ''
+        )
+        self.novel.customGoal = kwVarYw7.get(
+            'Field_CustomGoal', ''
+        )
+        self.novel.customConflict = kwVarYw7.get(
+            'Field_CustomConflict', ''
+        )
+        self.novel.customOutcome = kwVarYw7.get(
+            'Field_CustomOutcome', ''
+        )
+        self.novel.customChrBio = kwVarYw7.get(
+            'Field_CustomChrBio', '')
+        self.novel.customChrGoals = kwVarYw7.get(
+            'Field_CustomChrGoals', ''
+        )
+        self.novel.saveWordCount = kwVarYw7.get(
+            'Field_SaveWordCount', False
+        ) == '1'
 
         # This is for projects written with novxlib v7.6 - v7.10:
         field = kwVarYw7.get('Field_LanguageCode', None)
@@ -1154,11 +1298,17 @@ class Yw7File(File):
                 if xmlProjectnote.find('ID') is not None:
                     pnId = f"{PRJ_NOTE_PREFIX}{xmlProjectnote.find('ID').text}"
                     self.novel.tree.append(PN_ROOT, pnId)
-                    self.novel.projectNotes[pnId] = self._nvSvc.new_basic_element()
+                    self.novel.projectNotes[pnId] = (
+                        self._nvSvc.new_basic_element()
+                    )
                     if xmlProjectnote.find('Title') is not None:
-                        self.novel.projectNotes[pnId].title = xmlProjectnote.find('Title').text
+                        self.novel.projectNotes[pnId].title = (
+                            xmlProjectnote.find('Title').text
+                        )
                     if xmlProjectnote.find('Desc') is not None:
-                        self.novel.projectNotes[pnId].desc = xmlProjectnote.find('Desc').text
+                        self.novel.projectNotes[pnId].desc = (
+                            xmlProjectnote.find('Desc').text
+                        )
 
     def _read_projectvars(self, root):
         """Read relevant project variables from the xml element tree."""
@@ -1168,11 +1318,15 @@ class Yw7File(File):
                     title = xmlProjectvar.find('Title').text
                     if title == 'Language':
                         if xmlProjectvar.find('Desc') is not None:
-                            self.novel.languageCode = xmlProjectvar.find('Desc').text
+                            self.novel.languageCode = (
+                                xmlProjectvar.find('Desc').text
+                            )
 
                     elif title == 'Country':
                         if xmlProjectvar.find('Desc') is not None:
-                            self.novel.countryCode = xmlProjectvar.find('Desc').text
+                            self.novel.countryCode = (
+                                xmlProjectvar.find('Desc').text
+                            )
 
                     elif title.startswith('lang='):
                         try:
@@ -1237,14 +1391,26 @@ class Yw7File(File):
                         if prjScn.scType == 0:
                             arcSections = self.novel.plotLines[plId].sections
                             if not arcSections:
-                                arcSections = [f"{SECTION_PREFIX}{xmlScene.find('ID').text}"]
+                                arcSections = [
+                                    (
+                                        f"{SECTION_PREFIX}"
+                                        f"{xmlScene.find('ID').text}"
+                                    )
+                                ]
                             else:
-                                arcSections.append(f"{SECTION_PREFIX}{xmlScene.find('ID').text}")
+                                arcSections.append(
+                                    (
+                                        f"{SECTION_PREFIX}"
+                                        f"{xmlScene.find('ID').text}"
+                                    )
+                                )
                             self.novel.plotLines[plId].sections = arcSections
                         break
 
             ywScnAssocs = string_to_list(kwVarYw7.get('Field_SceneAssoc', ''))
-            prjScn.plotPoints = [f'{PLOT_POINT_PREFIX}{plotPoint}' for plotPoint in ywScnAssocs]
+            prjScn.plotPoints = [
+                f'{PLOT_POINT_PREFIX}{plotPoint}' for plotPoint in ywScnAssocs
+            ]
 
             if xmlScene.find('Goal') is not None:
                 prjScn.goal = xmlScene.find('Goal').text
@@ -1374,7 +1540,9 @@ class Yw7File(File):
                     title=prjScn.title,
                     desc=prjScn.desc)
                 if ywScnAssocs:
-                    self.novel.plotPoints[ppId].sectionAssoc = f'{SECTION_PREFIX}{ywScnAssocs[0]}'
+                    self.novel.plotPoints[ppId].sectionAssoc = (
+                        f'{SECTION_PREFIX}{ywScnAssocs[0]}'
+                    )
             else:
                 # it's a scene
                 if prjScn.tags and self.STAGE_MARKER in prjScn.tags:
@@ -1407,13 +1575,24 @@ class Yw7File(File):
             try:
                 os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
             except:
-                raise Error(f'{_("Cannot overwrite file")}: "{norm_path(ywProject.filePath)}".')
+                raise Error(
+                    (
+                        f'{_("Cannot overwrite file")}: '
+                        f'"{norm_path(ywProject.filePath)}".'
+                    )
+                )
             else:
                 backedUp = True
         try:
-            ywProject.tree.write(ywProject.filePath, xml_declaration=False, encoding='utf-8')
+            ywProject.tree.write(
+                ywProject.filePath,
+                xml_declaration=False,
+                encoding='utf-8',
+            )
         except:
             if backedUp:
                 os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
-            raise Error(f'{_("Cannot write file")}: "{norm_path(ywProject.filePath)}".')
+            raise Error(
+                f'{_("Cannot write file")}: "{norm_path(ywProject.filePath)}".'
+            )
 

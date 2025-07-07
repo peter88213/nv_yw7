@@ -6,6 +6,7 @@ For further information see https://github.com/peter88213/nv_yw7
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
+from pathlib import Path
 from tkinter import filedialog
 import webbrowser
 
@@ -13,6 +14,7 @@ from nvyw7lib.nvyw7_globals import _
 from nvlib.controller.plugin.plugin_base import PluginBase
 from nvlib.novx_globals import norm_path
 from nvyw7lib.yw7_file import Yw7File
+import tkinter as tk
 
 
 class Plugin(PluginBase):
@@ -34,11 +36,14 @@ class Plugin(PluginBase):
         Extends the superclass method.
         """
         super().install(model, view, controller)
+        self._icon = self._get_icon('ywriter.png')
         self._prefs = controller.get_preferences()
 
         # Add an entry to the "File > New" menu.
         self._ui.newMenu.add_command(
             label=_('Create from yw7...'),
+            image=self._icon,
+            compound='left',
             command=self._import_yw7,
         )
 
@@ -46,6 +51,8 @@ class Plugin(PluginBase):
         self._ui.exportMenu.insert_command(
             _('Options'),
             label=_('yw7 project'),
+            image=self._icon,
+            compound='left',
             command=self._export_yw7,
         )
         self._ui.exportMenu.insert_separator(_('Options'))
@@ -53,6 +60,8 @@ class Plugin(PluginBase):
         # Add an entry to the Help menu.
         self._ui.helpMenu.add_command(
             label=_('yw7 plugin Online help'),
+            image=self._icon,
+            compound='left',
             command=self.open_help,
         )
 
@@ -79,7 +88,7 @@ class Plugin(PluginBase):
             if not self._ui.ask_yes_no(
                 message=_('Overwrite existing yWriter file?'),
                 detail=norm_path(yw7Path)
-                ):
+            ):
                 self._ui.set_status(f'#{_("Action canceled by user")}.')
                 return False
 
@@ -110,8 +119,8 @@ class Plugin(PluginBase):
             yw7Path = filedialog.askopenfilename(
                 filetypes=[(Yw7File.DESCRIPTION, Yw7File.EXTENSION)],
                 defaultextension=Yw7File.EXTENSION,
-                initialdir=initDir
-                )
+                initialdir=initDir,
+            )
         if not yw7Path:
             return False
 
@@ -129,11 +138,10 @@ class Plugin(PluginBase):
                     if not self._ui.ask_yes_no(
                         message=_('Overwrite existing novelibre file?'),
                         detail=norm_path(novxPath)
-                        ):
+                    ):
                         self._ui.set_status(f'#{_("Action canceled by user")}.')
                         return False
 
-                self._ctrl.close_project()
                 yw7File = Yw7File(yw7Path, nv_service=self._mdl.nvService)
                 yw7File.novel = self._mdl.nvService.new_novel()
                 yw7File.read()
@@ -148,7 +156,7 @@ class Plugin(PluginBase):
                 self._ui.set_status(f'!{_("File type is not supported")}.')
                 return False
 
-        except Exception as ex:
+        except ZeroDivisionError as ex:
             self._ui.set_status(f'!{str(ex)}')
             return False
 
@@ -156,3 +164,16 @@ class Plugin(PluginBase):
         self._ui.set_status(f'{_("File imported")}: {yw7Path}')
         return True
 
+    def _get_icon(self, fileName):
+        # Return the icon for the main view.
+        if self._ctrl.get_preferences().get('large_icons', False):
+            size = 24
+        else:
+            size = 16
+        try:
+            homeDir = str(Path.home()).replace('\\', '/')
+            iconPath = f'{homeDir}/.novx/icons/{size}'
+            icon = tk.PhotoImage(file=f'{iconPath}/{fileName}')
+        except:
+            icon = None
+        return icon

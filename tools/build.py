@@ -12,7 +12,7 @@ import sys
 sys.path.insert(0, f'{os.getcwd()}/../../novelibre/tools')
 from package_builder import PackageBuilder
 
-VERSION = '5.4.0'
+VERSION = '5.5.0'
 
 
 class PluginBuilder(PackageBuilder):
@@ -20,6 +20,9 @@ class PluginBuilder(PackageBuilder):
     PRJ_NAME = 'nv_yw7'
     LOCAL_LIB = 'nvyw7lib'
     GERMAN_TRANSLATION = True
+
+    def add_extras(self):
+        self.add_icons()
 
 
 def main():

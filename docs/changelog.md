@@ -5,6 +5,16 @@
 ## Changelog
 
 
+### Version 5.5.0
+
+- Fixed a bug where the plugin tries to close the current project twice before importing yw7.
+- Added icon to menu entries.
+- Reformatted the code according to PEP-8.
+
+API: 5.27
+Based on novelibre 5.29.2
+
+
 ### Version 5.4.0
 
 Update for novelibre 5.27.
