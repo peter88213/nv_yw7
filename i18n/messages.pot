@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 5.5.1\n"
-"POT-Creation-Date: 2025-07-07 13:12:54\n"
+"POT-Creation-Date: 2025-08-16 15:28:19\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -13,6 +13,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: novxlib pgettext.py 0.3\n"
 
+
+msgid "1st Edit"
+msgstr ""
+
+msgid "2nd Edit"
+msgstr ""
 
 msgid "Action canceled by user"
 msgstr ""
@@ -27,6 +33,12 @@ msgid "Cannot write file"
 msgstr ""
 
 msgid "Create from yw7..."
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Draft"
 msgstr ""
 
 msgid "File"
@@ -48,6 +60,9 @@ msgid "Minor Character"
 msgstr ""
 
 msgid "Options"
+msgstr ""
+
+msgid "Outline"
 msgstr ""
 
 msgid "Overwrite existing novelibre file?"
