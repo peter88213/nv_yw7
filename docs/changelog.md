@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.6.0
+
+- No longer processing novelyst renamings.
+
+API: 5.27
+Based on novelibre 5.29.3 (5.33.0)
+
+
 ### Version 5.5.1
 
 - Fixed a bug where the plugin tries to close the current project twice before importing yw7.

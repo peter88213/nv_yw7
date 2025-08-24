@@ -593,11 +593,6 @@ class Yw7File(File):
                 'Field_ChapterHeadingSuffix': self.novel.chapterHeadingSuffix,
                 'Field_PartHeadingPrefix': self.novel.partHeadingPrefix,
                 'Field_PartHeadingSuffix': self.novel.partHeadingSuffix,
-                'Field_CustomGoal': self.novel.customGoal,
-                'Field_CustomConflict': self.novel.customConflict,
-                'Field_CustomOutcome': self.novel.customOutcome,
-                'Field_CustomChrBio': self.novel.customChrBio,
-                'Field_CustomChrGoals': self.novel.customChrGoals,
                 'Field_SaveWordCount': isTrue(
                     self.novel.saveWordCount
                 ),
@@ -1261,20 +1256,6 @@ class Yw7File(File):
         )
         self.novel.partHeadingSuffix = kwVarYw7.get(
             'Field_PartHeadingSuffix', ''
-        )
-        self.novel.customGoal = kwVarYw7.get(
-            'Field_CustomGoal', ''
-        )
-        self.novel.customConflict = kwVarYw7.get(
-            'Field_CustomConflict', ''
-        )
-        self.novel.customOutcome = kwVarYw7.get(
-            'Field_CustomOutcome', ''
-        )
-        self.novel.customChrBio = kwVarYw7.get(
-            'Field_CustomChrBio', '')
-        self.novel.customChrGoals = kwVarYw7.get(
-            'Field_CustomChrGoals', ''
         )
         self.novel.saveWordCount = kwVarYw7.get(
             'Field_SaveWordCount', False
