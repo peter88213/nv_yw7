@@ -10,7 +10,7 @@
 - No longer processing novelyst renamings.
 
 API: 5.27
-Based on novelibre 5.29.3 (5.33.0)
+Based on novelibre 5.33.0
 
 
 ### Version 5.5.1
