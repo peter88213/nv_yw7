@@ -19,7 +19,6 @@ from nvlib.novx_globals import CHAPTER_PREFIX
 from nvlib.novx_globals import CHARACTER_PREFIX
 from nvlib.novx_globals import CH_ROOT
 from nvlib.novx_globals import CR_ROOT
-from nvlib.novx_globals import Error
 from nvlib.novx_globals import ITEM_PREFIX
 from nvlib.novx_globals import IT_ROOT
 from nvlib.novx_globals import LC_ROOT
@@ -167,12 +166,12 @@ class Yw7File(File):
     def read(self):
         """Parse the yWriter xml file and get the instance variables.
         
-        Raise the "Error" exception in case of error. 
+        Raise the "RuntimeError" exception in case of error. 
         Overrides the superclass method.
         """
         if self.is_locked():
             msg = _("yWriter seems to be open. Please close first")
-            raise Error(f'{msg}.')
+            raise RuntimeError(f'{msg}.')
 
         self._noteCounter = 0
         self._noteNumber = 0
@@ -189,7 +188,7 @@ class Yw7File(File):
             try:
                 self.tree = ET.parse(self.filePath)
             except Exception as ex:
-                raise Error(f'{_("Can not process file")} - {str(ex)}')
+                raise RuntimeError(f'{_("Can not process file")} - {str(ex)}')
 
         xmlText = strip_illegal_characters(xmlText)
         root = ET.fromstring(xmlText)
@@ -237,11 +236,11 @@ class Yw7File(File):
         
         Open the yWriter xml file located at filePath and replace the 
         instance variables not being None. Create new XML elements if necessary.
-        Raise the "Error" exception in case of error. 
+        Raise the "RuntimeError" exception in case of error. 
         Overrides the superclass method.
         """
         if self.is_locked():
-            raise Error(f'{_("yWriter seems to be open. Please close first")}.')
+            raise RuntimeError(f'{_("yWriter seems to be open. Please close first")}.')
 
         self._novxParser = NovxToShortcode()
         self._noteCounter = 0
@@ -931,7 +930,7 @@ class Yw7File(File):
         Read the xml file, put a header on top, insert the missing CDATA tags,
         and replace xml entities by plain text (unescape). 
         Overwrite the .yw7 xml file.
-        Raise the "Error" exception in case of error. 
+        Raise the "RuntimeError" exception in case of error. 
         
         Note: The path is given as an argument rather than using self.filePath. 
         So this routine can be used for yWriter-generated xml files 
@@ -958,7 +957,7 @@ class Yw7File(File):
             with open(filePath, 'w', encoding='utf-8') as f:
                 f.write(text)
         except:
-            raise Error(f'{_("Cannot write file")}: "{norm_path(filePath)}".')
+            raise RuntimeError(f'{_("Cannot write file")}: "{norm_path(filePath)}".')
 
     def _read_locations(self, root):
         """Read locations from the xml element tree."""
@@ -1549,14 +1548,14 @@ class Yw7File(File):
     def _write_element_tree(self, ywProject):
         """Write back the xml element tree to a .yw7 xml file located at filePath.
         
-        Raise the "Error" exception in case of error. 
+        Raise the "RuntimeError" exception in case of error. 
         """
         backedUp = False
         if os.path.isfile(ywProject.filePath):
             try:
                 os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
             except:
-                raise Error(
+                raise RuntimeError(
                     (
                         f'{_("Cannot overwrite file")}: '
                         f'"{norm_path(ywProject.filePath)}".'
@@ -1573,7 +1572,7 @@ class Yw7File(File):
         except:
             if backedUp:
                 os.replace(f'{ywProject.filePath}.bak', ywProject.filePath)
-            raise Error(
+            raise RuntimeError(
                 f'{_("Cannot write file")}: "{norm_path(ywProject.filePath)}".'
             )
 

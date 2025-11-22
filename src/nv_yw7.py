@@ -20,7 +20,7 @@ import tkinter as tk
 class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '5.27'
+    API_VERSION = '5.43'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
     HELP_URL = _('https://peter88213.github.io/nv_yw7/help/')
