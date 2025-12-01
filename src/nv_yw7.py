@@ -6,7 +6,6 @@ For further information see https://github.com/peter88213/nv_yw7
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
-from pathlib import Path
 from tkinter import filedialog
 import webbrowser
 
@@ -14,13 +13,12 @@ from nvyw7lib.nvyw7_globals import _
 from nvlib.controller.plugin.plugin_base import PluginBase
 from nvlib.novx_globals import norm_path
 from nvyw7lib.yw7_file import Yw7File
-import tkinter as tk
 
 
 class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '5.43'
+    API_VERSION = '5.44'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
     HELP_URL = _('https://peter88213.github.io/nv_yw7/help/')
@@ -39,40 +37,41 @@ class Plugin(PluginBase):
         self._icon = self._get_icon('ywriter.png')
         self._prefs = controller.get_preferences()
 
+        #--- Configure the main menu.
+
         # Add an entry to the "File > New" menu.
+        label = _('Create from yw7...')
         self._ui.newMenu.add_command(
-            label=_('Create from yw7...'),
+            label=label,
             image=self._icon,
             compound='left',
             command=self._import_yw7,
         )
 
         # Add an entry to the "Export" menu.
+        pos = self._ui.exportMenu.index(_('Options'))
+        label = _('yw7 project')
         self._ui.exportMenu.insert_command(
-            _('Options'),
-            label=_('yw7 project'),
+            pos,
+            label=label,
             image=self._icon,
             compound='left',
             command=self._export_yw7,
         )
-        self._ui.exportMenu.insert_separator(_('Options'))
+        self._ui.exportMenu.disableOnLock.insert(label)
+        self._ui.exportMenu.insert_separator(pos)
 
         # Add an entry to the Help menu.
+        label = _('yw7 plugin Online help')
         self._ui.helpMenu.add_command(
-            label=_('yw7 plugin Online help'),
+            label=label,
             image=self._icon,
             compound='left',
             command=self.open_help,
         )
 
-    def lock(self):
-        self._ui.exportMenu.entryconfig(_('yw7 project'), state='disabled')
-
     def open_help(self):
         webbrowser.open(self.HELP_URL)
-
-    def unlock(self):
-        self._ui.exportMenu.entryconfig(_('yw7 project'), state='normal')
 
     def _export_yw7(self):
         """Export the current project to yw7.
@@ -164,16 +163,3 @@ class Plugin(PluginBase):
         self._ui.set_status(f'{_("File imported")}: {yw7Path}')
         return True
 
-    def _get_icon(self, fileName):
-        # Return the icon for the main view.
-        if self._ctrl.get_preferences().get('large_icons', False):
-            size = 24
-        else:
-            size = 16
-        try:
-            homeDir = str(Path.home()).replace('\\', '/')
-            iconPath = f'{homeDir}/.novx/icons/{size}'
-            icon = tk.PhotoImage(file=f'{iconPath}/{fileName}')
-        except:
-            icon = None
-        return icon
