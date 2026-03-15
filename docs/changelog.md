@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.8.1
+
+- Fixed the novelibre ui integration.
+
+API: 5.44
+Based on novelibre 5.53.0
+
+
 ### Version 5.8.0
 
 - Using the menu methods provided with novelibre 5.44.
