@@ -50,6 +50,7 @@ class Plugin(PluginBase):
 
         # Add an entry to the "Export" menu.
         pos = self._ui.exportMenu.index(_('Options'))
+        self._ui.exportMenu.insert_separator(pos)
         label = _('yw7 project')
         self._ui.exportMenu.insert_command(
             pos,
@@ -59,7 +60,6 @@ class Plugin(PluginBase):
             command=self._export_yw7,
         )
         self._ui.exportMenu.disableOnLock.insert(label)
-        self._ui.exportMenu.insert_separator(pos)
 
         # Add an entry to the Help menu.
         label = _('yw7 plugin Online help')
