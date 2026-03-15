@@ -59,7 +59,7 @@ class Plugin(PluginBase):
             compound='left',
             command=self._export_yw7,
         )
-        self._ui.exportMenu.disableOnLock.insert(label)
+        self._ui.exportMenu.disableOnClose.append(label)
 
         # Add an entry to the Help menu.
         label = _('yw7 plugin Online help')
