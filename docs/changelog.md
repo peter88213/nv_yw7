@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.8.2
+
+- Fixed a bug where the yw7 project cannot be written if a word count log exists.
+
+API: 5.44
+Based on novelibre 5.54.4
+
+
 ### Version 5.8.1
 
 - Fixed the novelibre ui integration.

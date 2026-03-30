@@ -785,8 +785,8 @@ class Yw7File(File):
                     wcLastTotalCount = self.wcLog[wc][1]
                 xmlWc = ET.SubElement(xmlWcLog, 'WC')
                 ET.SubElement(xmlWc, 'Date').text = wc
-                ET.SubElement(xmlWc, 'Count').text = self.wcLog[wc][0]
-                ET.SubElement(xmlWc, 'TotalCount').text = self.wcLog[wc][1]
+                ET.SubElement(xmlWc, 'Count').text = str(self.wcLog[wc][0])
+                ET.SubElement(xmlWc, 'TotalCount').text = str(self.wcLog[wc][1])
 
         #--- Prepare the XML tree for saving.
         indent(root)
@@ -1556,10 +1556,8 @@ class Yw7File(File):
                 os.replace(ywProject.filePath, f'{ywProject.filePath}.bak')
             except:
                 raise RuntimeError(
-                    (
-                        f'{_("Cannot overwrite file")}: '
-                        f'"{norm_path(ywProject.filePath)}".'
-                    )
+                    f'{_("Cannot overwrite file")}: '
+                    f'"{norm_path(ywProject.filePath)}".'
                 )
             else:
                 backedUp = True
