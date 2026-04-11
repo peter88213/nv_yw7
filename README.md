@@ -20,7 +20,7 @@ The [novelibre](https://github.com/peter88213/novelibre/) Python program helps a
 
 ### Default: Executable Python zip archive
 
-Download the latest release [nv_yw7_v5.8.2.pyz](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v5.8.2.pyz)
+Download the latest release [nv_yw7_v5.8.2.pyz](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v5.8.2.pyz) (29 KB)
 
 - Launch *nv_yw7_v5.8.2.pyz* by double-clicking (Windows desktop),
 - or execute `python nv_yw7_v5.8.2.pyz` (Windows), resp. `python3 nv_yw7_v5.8.2.pyz` (Linux) on the command line.
@@ -38,7 +38,7 @@ Download the latest release [nv_yw7_v5.8.2.pyz](https://github.com/peter88213/nv
 
 ### Alternative: Zip file
 
-The package is also available in zip format: [nv_yw7_v5.8.2.zip](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v5.8.2.zip)
+The package is also available in zip format: [nv_yw7_v5.8.2.zip](https://github.com/peter88213/nv_yw7/raw/main/dist/nv_yw7_v5.8.2.zip) (29 KB)
 
 - Extract the *nv_yw7_v5.8.2* folder from the downloaded zipfile "nv_yw7_v5.8.2.zip".
 - Move into this new folder and launch *setup.py* by double-clicking (Windows/Linux desktop), 
