@@ -1,4 +1,4 @@
-[Project homepage](https://github.com/peter88213/nv_yw7) > [Index](../) > User guide
+[Project homepage](https://github.com/peter88213/nv_yw7) > User guide
 
 ---
 
@@ -27,4 +27,4 @@ with the *novelibre* project\'s name in the project directory.
 
 ---
 
-Copyright (c) 2025 by Peter Triesberger. All rights reserved.
+Copyright (c) by Peter Triesberger. All rights reserved.
