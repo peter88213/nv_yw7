@@ -807,10 +807,7 @@ class Yw7File(File):
             for line in lines:
                 for tag in tags:
                     if isOpen[tag]:
-                        if line.startswith('&gt; '):
-                            line = f"&gt; {opening[tag]}{line.lstrip('&gt; ')}"
-                        else:
-                            line = f'{opening[tag]}{line}'
+                        line = f'{opening[tag]}{line}'
                         isOpen[tag] = False
                     while line.count(opening[tag]) > line.count(closing[tag]):
                         line = f'{line}{closing[tag]}'
@@ -914,11 +911,6 @@ class Yw7File(File):
                 text
             )
         text = f'<p>{text}</p>'
-        text = re.sub(
-            r'\<p\>\&gt\; (.*?)\<\/p\>',
-            '<p style="quotations">\\1</p>',
-            text
-        )
         return text
 
     def _postprocess_xml_file(self, filePath):

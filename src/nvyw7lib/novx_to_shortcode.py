@@ -13,6 +13,15 @@ class NovxToShortcode(sax.ContentHandler):
         'footnote':'@fn',
         'endnote':'@en',
     }
+    PARAGRAPH_TAGS = (
+        'p',
+        'h4',
+        'h5',
+        'h6',
+        'h7',
+        'h8',
+        'h9',
+    )
 
     def __init__(self):
         super().__init__()
@@ -47,7 +56,7 @@ class NovxToShortcode(sax.ContentHandler):
         
         Overrides the xml.sax.ContentHandler method     
         """
-        if name == 'p':
+        if name in self.PARAGRAPH_TAGS:
             while self._span:
                 self.textList.append(self._span.pop())
             if self._comment:
@@ -89,10 +98,8 @@ class NovxToShortcode(sax.ContentHandler):
             xmlAttributes[attrKey] = attrValue
         locale = xmlAttributes.get('xml:lang', None)
 
-        if name == 'p':
+        if name in self.PARAGRAPH_TAGS:
             self._paragraph = True
-            if xmlAttributes.get('style', None) == 'quotations':
-                self.textList.append('> ')
             return
 
         if name == 'em':
