@@ -15,7 +15,7 @@ class NovxToShortcode(sax.ContentHandler):
     }
     PARAGRAPH_TAGS = (
         'p',
-        'h4',
+        'blockquote',
         'h5',
         'h6',
         'h7',
