@@ -24,7 +24,7 @@ class Plugin(PluginBase):
     HELP_URL = _('https://peter88213.github.io/nv_yw7/help/')
 
     def install(self, model, view, controller):
-        """Add commands to the view.
+        """Install the plugin at runtime.
         
         Positional arguments:
             model -- reference to the novelibre main model instance.
