@@ -1,13 +1,12 @@
 """yw7 file import/export plugin for novelibre.
 
 Requires Python 3.7+
-Copyright (c) 2025 Peter Triesberger
+Copyright (c) Peter Triesberger
 For further information see https://github.com/peter88213/nv_yw7
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
 from tkinter import filedialog
-import webbrowser
 
 from nvyw7lib.nvyw7_globals import _
 from nvlib.controller.plugin.plugin_base import PluginBase
@@ -18,10 +17,11 @@ from nvyw7lib.yw7_file import Yw7File
 class Plugin(PluginBase):
     """yw7 file import/export plugin class."""
     VERSION = '@release'
-    API_VERSION = '5.44'
+    API_VERSION = '5.63'
     DESCRIPTION = 'yw7 file import/export plugin'
     URL = 'https://github.com/peter88213/nv_yw7'
-    HELP_URL = _('https://peter88213.github.io/nv_yw7/help/')
+    HELP_SITE = 'https://peter88213.github.io/nv_yw7'
+    HELP_PAGE = 'help'
 
     def install(self, model, view, controller):
         """Install the plugin at runtime.
@@ -61,17 +61,7 @@ class Plugin(PluginBase):
         )
         self._ui.exportMenu.disableOnClose.append(label)
 
-        # Add an entry to the Help menu.
-        label = _('yw7 plugin Online help')
-        self._ui.helpMenu.add_command(
-            label=label,
-            image=self._icon,
-            compound='left',
-            command=self.open_help,
-        )
-
-    def open_help(self):
-        webbrowser.open(self.HELP_URL)
+        self._add_help_menu_entry(_('yw7 plugin help'))
 
     def _export_yw7(self):
         """Export the current project to yw7.

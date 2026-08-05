@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.8.2\n"
+"Project-Id-Version: 5.9.0\n"
 "POT-Creation-Date: 2025-08-24 16:10:38\n"
-"PO-Revision-Date: 2026-03-30 14:23:09\n"
+"PO-Revision-Date: 2026-08-05 15:39:42\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -97,9 +97,6 @@ msgstr "Handlungsfortschritt"
 msgid "World building"
 msgstr "Weltenbau"
 
-msgid "https://peter88213.github.io/nv_yw7/help/"
-msgstr "https://peter88213.github.io/nv_yw7/help/"
-
 msgid "unknown"
 msgstr "unbekannt"
 
@@ -109,8 +106,8 @@ msgstr "yWriter 7-Projekt"
 msgid "yWriter seems to be open. Please close first"
 msgstr "yWriter scheint offen zu sein. Bitte schließen"
 
-msgid "yw7 plugin Online help"
-msgstr "yw7-Plugin Online-Hilfe"
+msgid "yw7 plugin help"
+msgstr "yw7-Plugin Hilfe"
 
 msgid "yw7 project"
 msgstr "yw7-Projekt"
