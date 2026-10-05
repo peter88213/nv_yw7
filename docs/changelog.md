@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.9.2
+
+- Fixed a bug where write errors may raise unhandled exceptions.
+
+API: 5.63
+Based on novelibre 5.66.6
+
+
 ### Version 5.9.1
 
 - Using the novelibre 5.63+ help service.

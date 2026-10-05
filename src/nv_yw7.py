@@ -88,7 +88,7 @@ class Plugin(PluginBase):
         yw7File.wcLog = self._mdl.prjFile.wcLog
         try:
             yw7File.write()
-        except TypeError as ex:
+        except Exception as ex:
             self._ui.set_status(f'!{str(ex)}')
             return False
 
