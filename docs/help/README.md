@@ -20,4 +20,4 @@ with the *novelibre* project\'s name in the project directory.
 
 ---
 
-Copyright (c) by Peter Triesberger. All rights reserved.
+Copyright (c) 2023 by Peter Triesberger. All rights reserved.
